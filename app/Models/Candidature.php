@@ -1,5 +1,5 @@
 <?php
-
+// App\Models\Candidature.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,12 +13,20 @@ class Candidature extends Model
         'etat',
         'candidat_id',
         'formation_id',
-       
     ];
 
-    public function notifications(){
-      return $this->hasMany(Notification::class);
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
     }
-  
 
+    public function candidat()
+    {
+        return $this->belongsTo(Candidat::class);
+    }
+
+    public function formation()
+    {
+        return $this->belongsTo(Formation::class);
+    }
 }

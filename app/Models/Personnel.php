@@ -1,5 +1,6 @@
 <?php
 
+// App\Models\Personnel.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,18 +11,16 @@ class Personnel extends Model
     use HasFactory;
 
     protected $fillable = [
-
         'nom',
         'prenom',
         'telephone',
         'adresse',
         'role',
         'email',
-       
     ];
- 
 
-    public function formations(){
+    public function formations()
+    {
         return $this->hasMany(Formation::class);
     }
 }
