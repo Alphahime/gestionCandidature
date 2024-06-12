@@ -10,3 +10,6 @@ Route::get('/', function () {
 // Routes pour l'authentification
 Route::get('/inscription', [AuthController::class, 'inscription'])->name('inscription');
 Route::post('/inscription', [AuthController::class, 'inscriptionPost'])->name('inscription');
+
+Route::get('/connexion', [AuthController::class, 'connexion'])->name('connexion');
+Route::post('/connexion', [AuthController::class, 'connexionPost'])->name('connexion');

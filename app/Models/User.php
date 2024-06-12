@@ -44,4 +44,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+     // Ajouter cette méthode pour spécifier le champ personnalisé pour le mot de passe
+     public function getAuthPassword()
+     {
+         return $this->mot_de_passe;
+     }
 }

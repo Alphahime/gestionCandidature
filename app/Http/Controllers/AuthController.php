@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
     public function inscription()
     {
-        return view('inscription');
+        return view('candidats.inscription');
     }
 
     public function inscriptionPost(Request $request)
@@ -37,4 +38,29 @@ class AuthController extends Controller
 
         return back()->with('success', 'Inscription réussie');
     }
+
+    public function connexion()
+    {
+        return view('candidats/connexion');
+    }
+
+    public function connexionPost(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'mot_de_passe' => 'required|string|min:8'
+        ]);
+    
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->mot_de_passe // Toujours utiliser 'password' ici
+        ];
+    
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('index')->with('success', 'Connexion réussie');
+        }
+    
+        return back()->with('error', 'Email ou mot de passe incorrect');
+    }
+    
 }

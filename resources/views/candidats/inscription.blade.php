@@ -54,14 +54,14 @@
                                 <label for="cv" class="form-label">Curricum Vitae</label>
                                 <input type="file" name="cv" class="form-control" id="cv" placeholder="Adia Oumy Fall" required>
                             </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="biographie" class="form-label">Biographie</label>
                                 <textarea name="biographie" id="biographie" cols="30" rows="10"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="motivation" class="form-label">Motivation</label>
                                 <textarea name="motivation" id="motivation" cols="30" rows="10"></textarea>
-                            </div>
+                            </div> --}}
                            
                             <div class="mb-3">
                                 <div class="d-grid">
