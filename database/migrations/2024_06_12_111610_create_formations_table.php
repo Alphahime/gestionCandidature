@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('formations', function (Blueprint $table) {
@@ -21,14 +18,11 @@ return new class extends Migration
             $table->timestamp('datePublication');
             $table->date('dateDebut');
             $table->date('dateLimite');
-            $table->foreignId('personnel_id')->references('id')->on('personnels');
+            $table->foreignId('personnel_id')->constrained('personnels')->onDelete('cascade');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('formations');

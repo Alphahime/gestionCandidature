@@ -6,23 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('candidatures', function (Blueprint $table) {
             $table->id();
-            $table->enum('etat', ['accepte', 'enCours', 'rejete'])->default('enCours');
-            $table->foreignId('candidat_id')->constrained()->onDelete('cascade');
-            $table->foreignId('formation_id')->constrained()->onDelete('cascade');
+            $table->string('etat');
+            $table->foreignId('candidat_id')->constrained('candidats')->onDelete('cascade');
+            $table->foreignId('formation_id')->constrained('formations')->onDelete('cascade');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('candidatures');
