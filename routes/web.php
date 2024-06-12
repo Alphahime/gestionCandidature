@@ -13,3 +13,7 @@ Route::post('/inscription', [AuthController::class, 'inscriptionPost'])->name('i
 
 Route::get('/connexion', [AuthController::class, 'connexion'])->name('connexion');
 Route::post('/connexion', [AuthController::class, 'connexionPost'])->name('connexion');
+use App\Http\Controllers\CandidatureController;
+
+Route::get('/postuler', [CandidatureController::class, 'creer'])->name('candidatures.creer');
+Route::post('/postuler', [CandidatureController::class, 'store'])->name('candidatures.store');
