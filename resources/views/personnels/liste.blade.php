@@ -58,6 +58,156 @@
     color: white;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4A90E2;
+}
+.Btn_add {
+    width: fit-content;
+    margin-bottom:20px;
+    background-color: #2bc48a;
+    padding: 5px 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-align: 0;
+    border-radius: 6px;
+    text-decoration: 0;
+}
+.Btn_add img {
+    margin-right: 5px;
+    height: 20px;
+}
+/*tableau*/
+table {
+    margin: auto;
+    border-collapse: separate;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-top: 30px;
+}
+th, td {
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    background-color: #4A90E2;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+   
+}
+
+td {
+    background-color: #fff;
+    font-weight: 400;
+}
+
+tr:nth-child(even) {
+    background-color: #f6f8f8;
+}
+
+tr:nth-child(even) td {
+    border-bottom: 1px solid #e0e0e0;
+    border-top:  1px solid #e0e0e0;
+}
+img {
+    height: 25px;
+   
+}
+/*Form CSS*/
+
+.form form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin: auto;
+}
+.back_btn {
+    color: rgba(48, 17, 188, 1);
+    text-decoration: 0;
+    display: flex;
+    align-items: center;
+}
+.back_btn img {
+    height: 16px;
+    margin-right:5px ;
+    color: rgba(48, 17, 188, 1);
+}
+
+.erreur_message {
+    color: red;
+    font-size: 12px;
+}
+
+body {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+    background-color: #f0f0f0;
+}
+
+
+.form {
+    display:flex;
+    flex-direction: column;
+   background-color: #fff;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 35%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+
+
+
+h2 {
+    margin: 10px 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    color:#4A90E2 ;
+}
+
+label {
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+input{
+    padding: 5px;
+    border: 1px solid #999;
+    outline: 0;
+    margin-top: 2px;
+}
+input:focus{
+    border: 1px solid #ffcb61;
+}
+input[type="submit"]{
+    margin-top: 25px;
+    background-color: rgba(48, 17, 188, 1);
+    border: 1px solid #2bc48a;
+    cursor: pointer;
+    color: #fff;
+    text-transform: uppercase;
+}
+
     </style>
     <div class="container-fluid">
         <div class="row">
@@ -122,7 +272,7 @@
 
             
 
-                    <div class="col-md-6">
+                     <div class="col-md-6">
                         @foreach($formations as $formation)
                         <div class="card mb-4 shadow-sm">
                             <img src="formation1.jpg" class="card-img-top" alt="Formation 1">
@@ -144,7 +294,8 @@
                         </div>
                         @endforeach
                     </div>
-                    
+                
+
                 </div>
             </main>
         </div>
