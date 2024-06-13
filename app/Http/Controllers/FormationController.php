@@ -12,7 +12,7 @@ class FormationController extends Controller
     public function affiche_formation(){
 
         $formations = Formation::all();
-        return view('personnels.liste', compact('formations'));
+        return view('personnels.liste_Perso', compact('formations'));
     }
 
 
@@ -41,7 +41,7 @@ class FormationController extends Controller
         $formation->dateDebut = $request->dateDebut;
        // $formation->personnel_id = auth()->user()->id;
         $formation->save();
-        return redirect('/liste')->with( 'status', 'formation ajouté avec success');
+        return redirect('/liste_Perso')->with( 'status', 'formation ajouté avec success');
     }
 
     public function Modifier($id){
@@ -72,12 +72,12 @@ class FormationController extends Controller
         $formation->datePublication = $request->datePublication;
         $formation->dateDebut = $request->dateDebut;
         $formation->save();
-        return redirect('/liste')->with( 'status', 'formation modifié avec success');
+        return redirect('/liste_Perso')->with( 'status', 'formation modifié avec success');
     }
 
     public function supprimer($id){
         $formation = Formation::find($id);
         $formation->delete();
-        return redirect('/liste')->with( 'status', 'formation supprimé avec success');
+        return redirect('/liste_Perso')->with( 'status', 'formation supprimé avec success');
     }
 }
