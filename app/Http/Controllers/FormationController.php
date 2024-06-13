@@ -80,4 +80,9 @@ class FormationController extends Controller
         $formation->delete();
         return redirect('/liste')->with( 'status', 'formation supprimé avec success');
     }
+    public function detail(){
+        return view('formations.indexdetail');
+ 
+ }   
+
 }
