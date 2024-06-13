@@ -71,3 +71,5 @@ Route::post('/postuler', [CandidatureController::class, 'store'])->name('candida
 // Route::post('/modif_form/{id}', [FormationController::class,'Modifier_traitement']);
 
 // Route::get('/supprimer_form/{id}', [FormationController::class,'supprimer']);
+
+Route::get('/detailFormation',[FormationController::class, 'detail']);
