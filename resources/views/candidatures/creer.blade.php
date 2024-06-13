@@ -16,7 +16,7 @@
             </div>
         @endif
     
-        <form action="{{ route('candidatures.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('candidatures.creer') }}" method="POST" enctype="multipart/form-data">
             @csrf
     
             <div class="form-group">
