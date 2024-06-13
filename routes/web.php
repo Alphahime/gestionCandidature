@@ -12,7 +12,7 @@ Route::get('/', function () {
 
 //Route pour le CRUD des Formations
 
-Route::get('/liste_Perso', [PersonnelController::class,'liste']);
+Route::get('/liste', [PersonnelController::class,'liste']);
 
 Route::get('/ajout_form', [PersonnelController::class,'ajouter']);
 
