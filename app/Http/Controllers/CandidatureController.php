@@ -4,8 +4,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Candidat;
+use App\Models\Candidature;
+use Illuminate\Http\Request;
+use App\Mail\CandidatureRejetee;
+use App\Mail\CandidatureValidee;
+use Illuminate\Support\Facades\Mail;
+
 
 class CandidatureController extends Controller
 {
@@ -44,4 +49,35 @@ class CandidatureController extends Controller
 
         return redirect()->route('candidatures.creer')->with('success', 'Votre candidature a été soumise avec succès.');
     }
+
+    public function index()
+{
+    $candidatures = Candidat::latest()->get(); // Récupère toutes les candidatures, triées par date de création décroissante
+
+    return view('candidatures.index', compact('candidatures'));
+}
+public function valider($id)
+{
+    $candidature = Candidature::findOrFail($id);
+    $candidature->etat = 'validee'; // Assurez-vous que 'validee' est une valeur valide pour votre enum
+    $candidature->save();
+
+    // Envoyer un e-mail de confirmation de validation
+    Mail::to($candidature->candidat->email)->send(new CandidatureValidee($candidature)); // Exemple d'utilisation de la relation pour accéder à l'email du candidat
+
+    return redirect()->back()->with('success', 'La candidature a été validée.');
+}
+
+public function rejeter($id)
+{
+    $candidature = Candidature::findOrFail($id);
+    $candidature->etat = 'rejetee'; // Assurez-vous que 'rejetee' est une valeur valide pour votre enum
+    $candidature->save();
+
+    // Envoyer un e-mail de rejet
+    Mail::to($candidature->candidat->email)->send(new CandidatureRejetee($candidature)); // Exemple d'utilisation de la relation pour accéder à l'email du candidat
+
+    return redirect()->back()->with('success', 'La candidature a été rejetée.');
+}
+
 }
