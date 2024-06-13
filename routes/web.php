@@ -33,7 +33,6 @@ Route::post('/inscription', [AuthController::class, 'inscriptionPost'])->name('i
 
 Route::get('/connexion', [AuthController::class, 'connexion'])->name('connexion');
 Route::post('/connexion', [AuthController::class, 'connexionPost'])->name('connexion');
-
 // Routes pour postuler
 
 Route::get('/postuler', [CandidatureController::class, 'creer'])->name('candidatures.creer');
