@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Candidature Validée</title>
+    <title>Votre candidature a été validée</title>
 </head>
 <body>
-    <h2>Votre candidature a été validée</h2>
-    <p>Bonjour {{ $candidature->prenom }},</p>
+    <h1>Félicitations, {{ $candidature->nom }}!</h1>
     <p>Votre candidature a été validée avec succès.</p>
-    <p>Merci et bonne continuation !</p>
 </body>
 </html>
