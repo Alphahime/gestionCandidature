@@ -3,12 +3,13 @@
 // App\Models\Personnel.php
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable; // Correct import for user model
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Personnel extends Model
+class Personnel extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         'nom',
@@ -17,10 +18,21 @@ class Personnel extends Model
         'adresse',
         'role',
         'email',
+        'mot_de_passe', // ajoutez ici les champs nécessaires
+    ];
+
+    protected $hidden = [
+        'mot_de_passe', 'remember_token',
     ];
 
     public function formations()
     {
         return $this->hasMany(Formation::class);
+    }
+
+    // Ajouter cette méthode pour spécifier le champ personnalisé pour le mot de passe
+    public function getAuthPassword()
+    {
+        return $this->mot_de_passe;
     }
 }

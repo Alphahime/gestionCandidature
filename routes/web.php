@@ -73,3 +73,6 @@ Route::post('/postuler', [CandidatureController::class, 'store'])->name('candida
 // Route::get('/supprimer_form/{id}', [FormationController::class,'supprimer']);
 
 Route::get('/detailFormation',[FormationController::class, 'detail']);
+
+Route::get('/personnel/connexion', [AuthController::class, 'connexionPersonnel'])->name('personnel.connexion');
+Route::post('/personnel/connexion', [AuthController::class, 'connexionPostPersonnel'])->name('personnel.connexion.post');
