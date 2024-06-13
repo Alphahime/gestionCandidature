@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('telephone');
             $table->string('adresse');
             $table->string('email');
-            $table->string('mot_de_passe')->nullable();
+            $table->string('mot_de_passe');
             $table->text('biographie')->nullable();
             $table->text('motivation')->nullable();
             $table->string('cv');
