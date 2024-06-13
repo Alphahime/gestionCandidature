@@ -22,6 +22,6 @@ class CandidatureRejetee extends Mailable
     public function build()
     {
         return $this->subject('Votre candidature a été rejetée')
-                    ->view('candidature-rejetee');
+                    ->view('candidatures.rejeter');
     }
 }

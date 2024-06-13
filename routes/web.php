@@ -5,10 +5,14 @@ use App\Http\Controllers\LandingController;use App\Http\Controllers\FormationCon
 use App\Http\Controllers\PersonnelController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CandidatureController;
+use App\Http\Controllers\TestController;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/indexdetail', [FormationController::class,'detail']);
 
 //Route pour le CRUD des Formations
 
@@ -49,6 +53,7 @@ Route::post('/postuler', [CandidatureController::class, 'store'])->name('candida
 
 Route::get('/acceuil', [LandingController::class, 'landing'])->name('landing');
 Route::get('/candidatures', [CandidatureController::class, 'index'])->name('candidatures.index');
+
 Route::post('/candidatures/{id}/valider', [CandidatureController::class, 'valider'])->name('candidatures.valider');
 Route::post('/candidatures/{id}/rejeter', [CandidatureController::class, 'rejeter'])->name('candidatures.rejeter');
 
@@ -92,3 +97,9 @@ Route::get('/detailFormation',[FormationController::class, 'detail']);
 Route::get('/personnel/connexion', [AuthController::class, 'connexionPersonnel'])->name('personnel.connexion');
 Route::post('/personnel/connexion', [AuthController::class, 'connexionPostPersonnel'])->name('personnel.connexion.post');
 
+Route::post('/candidatures/{id}/{action}', [CandidatureController::class, 'candidatureAction'])->name('candidatures.action');
+
+// Route::post('/candidatures/{id}/rejeter', [CandidatureController::class, 'rejeter'])->name('candidatures.rejeter');
+
+
+// Route::get('/bar', [TestController::class, 'bar']);

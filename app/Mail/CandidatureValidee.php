@@ -21,7 +21,7 @@ class CandidatureValidee extends Mailable
 
     public function build()
     {
-        return $this->subject('Votre candidature a été validée')
-                    ->view('candidature-validee');
+        return $this->from('adiaratououmyfall@gmail.com')->subject('Votre candidature a été validée')
+                    ->view('candidatures.valider');
     }
 }

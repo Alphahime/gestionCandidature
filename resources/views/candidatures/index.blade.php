@@ -29,14 +29,16 @@
                             <a href="{{ asset('storage/' . $candidature->cv) }}" class="card-link" target="_blank">Voir CV</a>
                             <p class="card-text"><small class="text-muted">Date de soumission: {{ $candidature->created_at->format('d/m/Y H:i') }}</small></p>
 
-                            <form action="{{ route('candidatures.valider', ['id' => $candidature->id]) }}" method="POST" style="display: inline;">
+                            <form action="{{ route('candidatures.action', ['id' => $candidature->id, 'action' => 'valider']) }}" method="POST" style="display: inline;">
                                 @csrf
                                 <button type="submit" class="btn btn-success">Valider</button>
                             </form>
-                            <form action="{{ route('candidatures.rejeter', ['id' => $candidature->id]) }}" method="POST" style="display: inline;">
+                            
+                            <form action="{{ route('candidatures.action', ['id' => $candidature->id, 'action' => 'rejeter']) }}" method="POST" style="display: inline;">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Rejeter</button>
                             </form>
+                            
                         </div>
                     </div>
                 @endforeach
