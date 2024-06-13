@@ -14,7 +14,6 @@ Route::get('/', function () {
 
 Route::get('/indexdetail', [FormationController::class,'detail']);
 
-
 //Route pour le CRUD des Formations
 
 Route::get('/liste_Perso', [PersonnelController::class,'liste']);
