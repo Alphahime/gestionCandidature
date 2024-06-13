@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidat;
+use App\Models\Personnel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -50,17 +51,50 @@ class AuthController extends Controller
             'email' => 'required|email',
             'mot_de_passe' => 'required|string|min:8'
         ]);
-    
+
         $credentials = [
             'email' => $request->email,
-            'password' => $request->mot_de_passe // Toujours utiliser 'password' ici
+            'password' => $request->mot_de_passe
         ];
-    
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('index')->with('success', 'Connexion réussie');
+
+        // Vérifier le type d'utilisateur (candidat ou personnel)
+        if ($request->has('personnel')) {
+            // Authentification du personnel
+            if (Auth::guard('personnel')->attempt($credentials)) {
+                return redirect()->route('personnel.dashboard')->with('success', 'Connexion réussie');
+            }
+        } else {
+            // Authentification du candidat
+            if (Auth::guard('web')->attempt($credentials)) {
+                return redirect()->route('index')->with('success', 'Connexion réussie');
+            }
         }
-    
+
         return back()->with('error', 'Email ou mot de passe incorrect');
     }
+
+    public function deconnexion()
+    {
+        Auth::logout();
+        return redirect()->route('connexion');
+    }
+
+    public function connexionPersonnel()
+    {
+        return view('personnel/connexion');
+    }
+    public function connexionPostPersonnel(Request $request){
+        $personnel = Personnel::where('email', $request->email)->first();
+
+        if ($personnel && md5($request->mot_de_passe) == $personnel->mot_de_passe) {
+            Auth::login($personnel);
+            return true;
+        }
+
+        return false;
+    
+    
+    }
+
     
 }
