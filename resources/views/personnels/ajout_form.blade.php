@@ -161,9 +161,9 @@ body {
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">Ajouter une formation</h5>
-                                <button type="button" class="close" aria-label="Close">
+                                <a type="button" href="/liste" class="close" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
-                                </button>
+                                </a>
                             </div>
                                  
                                 <ul>

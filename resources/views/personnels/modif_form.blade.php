@@ -160,10 +160,10 @@ body {
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Ajouter une formation</h5>
-                                <button type="button" class="close" aria-label="Close">
+                                <h5 class="modal-title">Modifier une formation</h5>
+                                <a type="button" href="/liste" class="close" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
-                                </button>
+                                </a>
                             </div>
                                  
                                 <ul>
@@ -183,49 +183,50 @@ body {
 
 
                             <div class="modal-body">
-                                <form action='/ajout_traitement' method="POST">
+                                <form action='/modif_form/{id}' method="POST">
                                     @csrf
                                     <div class="form-row">
+                                        <input type="hidden" name="id" value="{{$formation->id}}">
                                         <div class="form-group col-md-6">
                                             <label for="libelle">Libellé</label>
-                                            <input name="libelle" type="text" class="form-control" id="libelle" value="" placeholder="Donner le nom de la formation">
+                                            <input name="libelle" type="text" class="form-control" id="libelle" value="{{$formation->libelle}}" placeholder="Donner le nom de la formation">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="lieu">Lieu</label>
-                                            <input name="lieu" type="text" class="form-control" id="lieu" placeholder="Lieu de la formation">
+                                            <input name="lieu" type="text" class="form-control" id="lieu" value="{{$formation->lieu}}" placeholder="Lieu de la formation">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="description">Description</label>
-                                            <textarea name="description" class="form-control" id="description" placeholder="Donnez une description de la formation" rows="3"></textarea>
+                                            <textarea name="description" class="form-control" id="description"  placeholder="Donnez une description de la formation" rows="3"> {{$formation->description}} </textarea>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="horaire">Horaire</label>
-                                            <input name="horaire" type="text" class="form-control" id="horaire" placeholder="Horaire de la formation">
+                                            <input name="horaire" type="text" class="form-control" id="horaire" value="{{$formation->horaire}}"  placeholder="Horaire de la formation">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="duree">Durée</label>
-                                            <input name="duree" type="text" class="form-control" id="duree" placeholder="Durée de la formation">
+                                            <input name="duree" type="text" class="form-control" id="duree" value="{{$formation->duree}}"  placeholder="Durée de la formation">
                                         </div>
 
                                         <div class="form-group col-md-6">
                                             <label for="type">Delai Candidature</label>
-                                            <input type="date" class="form-control"   name="dateLimite" id="type" placeholder="Dernier delai de Candidature">
+                                            <input type="date" class="form-control"   name="dateLimite" id="type" value="{{$formation->dateLimite}}"  placeholder="Dernier delai de Candidature">
                                         </div>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="duree">Publie le</label>
-                                            <input type="date" class="form-control"  name="datePublication" id="duree" placeholder="Date de Publication">
+                                            <input type="date" class="form-control"  name="datePublication" value="{{$formation->datePublication}}" id="datePublication" placeholder="Date de Publication">
                                         </div>
                                         
                                         <div class="form-group col-md-6">
                                             <label for="type">Demarrage</label>
-                                            <input type="date" class="form-control"  name="dateDebut" id="type" placeholder="Demarrage des cours">
+                                            <input type="date" class="form-control"  name="dateDebut" id="type" value="{{$formation->dateDebut}}"  placeholder="Demarrage des cours">
                                         </div>
                                     </div>
                                     <div class="text-center">
