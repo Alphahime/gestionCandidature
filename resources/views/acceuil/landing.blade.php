@@ -393,9 +393,9 @@ gap: 60px;
         </div>
     </div>
     <div class="explorer-container">
-        <button class="explorer-button">
+        <a href="{{route('nos_formations')}}"><button class="explorer-button">
             <img src="{{ asset('images/fleche.png') }}" alt="Flèche" class="icon-fleche"> Explorer
-        </button>
+        </button></a>
     </div>
     
     <div class="section-nos-formations">
@@ -408,8 +408,8 @@ gap: 60px;
                     Début: Juillet 202<br>
                     Durée: 09 mois
                 </div>
-                <button>Découvrez la formation</button>
-                <button>Postuler</button>
+                <a href="{{route('details_formation')}}"><button>Découvrez la formation</button></a>
+                <a href="{{route('connexion')}}"><button>Postuler</button></a>
                 <div class="horizontal-bar"></div>
             </div>
             <div class="box-card">
@@ -419,8 +419,8 @@ gap: 60px;
                     Début: Juillet 202<br>
                     Durée: 09 mois
                 </div>
-                <button>Découvrez la formation</button>
-                <button>Postuler</button>
+                <a href="{{route('details_formation')}}"><button>Découvrez la formation</button></a>
+                <a href="{{route('connexion')}}"><button>Postuler</button></a>
                 <div class="horizontal-bar"></div>
             </div>
             <div class="box-card">
@@ -430,8 +430,8 @@ gap: 60px;
                     Début: Juillet 202<br>
                     Durée: 09 mois
                 </div>
-                <button>Découvrez la formation</button>
-                <button>Postuler</button>
+                <a href="{{route('details_formation')}}"><button>Découvrez la formation</button></a>
+                <a href="{{route('connexion')}}"><button>Postuler</button></a>
                 <div class="horizontal-bar"></div>
             </div>
         </div>  

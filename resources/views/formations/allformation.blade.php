@@ -26,18 +26,18 @@
             <div class="box-card">
             <img src="{{ asset('images/africanwoman.jpg') }}" alt="">
                 <div class="card-label">Développement web</div>
-                <button class="btn-formation">Découvrez la formation</button>
+                <a href="{{route('details_formation')}}"><button class="btn-formation   ">Découvrez la formation</button></a>
                 <div class="horizontal-bar"></div>
             </div>
             <div class="box-card">
                 <div class="card-label">Référent Digitale</div>
-                <button class="btn-formation">Découvrez la formation</button>
+                <a href="{{route('details_formation')}}"><button class="btn-formation   ">Découvrez la formation</button></a>
                 <div class="horizontal-bar"></div>
             </div>
             <div class="box-card">
                 <img src="{{ asset('images/africanwoman.jpg') }}" alt="">
                 <div class="card-label">Référent Digitale</div>
-                <button class="btn-formation">Découvrez la formation</button>
+                <a href="{{route('details_formation')}}"><button class="btn-formation   ">Découvrez la formation</button></a>
                 <div class="horizontal-bar"></div>
             </div>
         </div>  
@@ -184,6 +184,7 @@
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        width: 100%;
     }
     .btn-formation:hover, .btn-postuler:hover {
         background-color: #a80026;
