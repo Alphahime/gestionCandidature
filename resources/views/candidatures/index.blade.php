@@ -136,8 +136,7 @@
                                     <th>Âge</th>
                                     <th>Téléphone</th>
                                     <th>Adresse</th>
-                                    <th>Motivation</th>
-                                    <th>Biographie</th>
+    
                                     <th>CV</th>
                                     <th>Date de soumission</th>
                                     <th>Actions</th>
@@ -151,8 +150,7 @@
                                         <td>{{ $candidature->age }}</td>
                                         <td>{{ $candidature->telephone }}</td>
                                         <td>{{ $candidature->adresse }}</td>
-                                        <td>{{ $candidature->motivation}}</td>
-                                        <td>{{ $candidature->biographie }}</td>
+                
                                         <td><a href="{{ asset('storage/' . $candidature->cv) }}" target="_blank">Voir CV</a></td>
                                         <td>{{ $candidature->created_at->format('d/m/Y H:i') }}</td>
                                         <td>
