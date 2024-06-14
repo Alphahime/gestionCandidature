@@ -49,7 +49,7 @@ Route::get('/postuler', [CandidatureController::class, 'creer'])->name('candidat
 Route::post('/postuler', [CandidatureController::class, 'store'])->name('candidatures.store');
 
 
-//vers la page d'acceuil
+
 
 Route::get('/acceuil', [LandingController::class, 'landing'])->name('landing');
 Route::get('/candidatures', [CandidatureController::class, 'index'])->name('candidatures.index');
