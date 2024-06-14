@@ -1,4 +1,3 @@
-<!-- resources/views/candidatures/detail.blade.php -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -50,17 +49,30 @@
             width: 100%;
         }
 
-        .card {
+        .content {
+            margin-left: 270px; /* Ajuster pour laisser de la place à la sidebar */
+        }
+
+        .info-bar {
+            background-color: #e51d3e;
+            color: white;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-bar p {
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-container {
             margin-top: 20px;
         }
 
-        .card-custom {
-            background-color: #e51d3e;
-            color: white;
-        }
-
-        .content {
-            margin-left: 270px; /* Ajuster pour laisser de la place à la sidebar */
+        .cv-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Centrer l'image */
         }
     </style>
 </head>
@@ -112,7 +124,13 @@
                 </div>
             </nav>
 
-            <div class="col-md-10 content">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <div class="info-bar">
+                    <p><strong>{{ $candidature->nom }} {{ $candidature->prenom }}</strong></p>
+                    <p>{{ $candidature->telephone }}</p>
+                    <p>{{ $candidature->email }}</p>
+                    <p>{{ $candidature->adresse }}</p>
+                </div>
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-md-8">
@@ -122,21 +140,21 @@
                             <p>{{ $candidature->motivation }}</p>
                         </div>
                         <div class="col-md-4">
-                            <div class="card card-custom">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $candidature->nom }} {{ $candidature->prenom }}</h5>
-                                    <h6 class="card-subtitle mb-2 text-white">{{ $candidature->email }}</h6>
-                                    <p class="card-text">{{ $candidature->adresse }}</p>
-                                </div>
+                            <div class="cv-container">
+                                <h5>CV de {{ $candidature->nom }} {{ $candidature->prenom }}</h5>
+                                <a href="{{ asset('storage/' . $candidature->cv) }}" target="_blank">
+                                    <img src="{{ asset('storage/' . $candidature->cv) }}" alt="CV de {{ $candidature->nom }} {{ $candidature->prenom }}">
+
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </main>
         </div>
     </div>
 
-    <!-- Inclusion de Bootstrap JavaScript (facultatif, pour certains composants Bootstrap) -->
+    <!-- Inclusion de Bootstrap JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
