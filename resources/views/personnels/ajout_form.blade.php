@@ -57,25 +57,56 @@
     background-color: #e51d3e;
     color: white;
 }
+
+</form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+CSS (styles.css)
+css
+Copier le code
 body {
     background-color: #f8f9fa;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
 }
 
 .modal-dialog {
     max-width: 700px;
 }
 
-.modal-header {
-    border-bottom: none;
+.modal-content {
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-.modal-header .close {
-    padding: 1rem;
-    margin: -1rem -1rem -1rem auto;
+.modal-header {
+    border-bottom: none;
+    background-color: #ce0033;
+    color: #fff;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.modal-header .btn-close {
+    background: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-header .btn-close:hover {
+    background: #0056b3;
 }
 
 .modal-title {
@@ -88,6 +119,18 @@ body {
 
 .form-group label {
     font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    border-radius: 5px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.form-control:focus {
+    border-color: #ce0033;
+    box-shadow: 0 0 5px rgba(0,123,255,.25);
 }
 
 .btn-primary {
@@ -96,13 +139,16 @@ body {
     padding: 10px 20px;
     font-size: 1.1em;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
 }
 
-
+.text-center {
+    margin-top: 1rem;
+}
 
     </style>
     <div class="container-fluid">
@@ -151,91 +197,66 @@ body {
             </nav>
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Liste des Formations</h1>
-                   
-                </div>
+        
 
-                <div class="row">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Ajouter une formation</h5>
-                                <a type="button" href="/liste" class="close" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </a>
-                            </div>
-                                 
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                    <li class="alert alert-danger">
-                                    {{$error}}
-                                </li>
-                                    @endforeach
-                                </ul>
-
-
-                                @if (session('status'))
-                                <div class="alert alert-success">
-                                    {{ session('status') }}
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Ajouter une formation</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action='/ajout_traitement' method="POST">
+                                @csrf
+                                <div class="form-row mb-3">
+                                    <div class="form-group col-md-6">
+                                        <label for="libelle">Libellé</label>
+                                        <input name="libelle" type="text" class="form-control" id="libelle" placeholder="Donner le nom de la formation">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="lieu">Lieu</label>
+                                        <input name="lieu" type="text" class="form-control" id="lieu" placeholder="Lieu de la formation">
+                                    </div>
                                 </div>
-                            @endif
-
-
-                            <div class="modal-body">
-                                <form action='/ajout_traitement' method="POST">
-                                    @csrf
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="libelle">Libellé</label>
-                                            <input name="libelle" type="text" class="form-control" id="libelle" placeholder="Donner le nom de la formation">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="lieu">Lieu</label>
-                                            <input name="lieu" type="text" class="form-control" id="lieu" placeholder="Lieu de la formation">
-                                        </div>
+                                <div class="form-row mb-3">
+                                    <div class="form-group col-md-6">
+                                        <label for="description">Description</label>
+                                        <textarea name="description" class="form-control" id="description" placeholder="Donnez une description de la formation" rows="3"></textarea>
                                     </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="description">Description</label>
-                                            <textarea name="description" class="form-control" id="description" placeholder="Donnez une description de la formation" rows="3"></textarea>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="horaire">Horaire</label>
-                                            <input name="horaire" type="text" class="form-control" id="horaire" placeholder="Horaire de la formation">
-                                        </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="horaire">Horaire</label>
+                                        <input name="horaire" type="text" class="form-control" id="horaire" placeholder="Horaire de la formation">
                                     </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="duree">Durée</label>
-                                            <input name="duree" type="text" class="form-control" id="duree" placeholder="Durée de la formation">
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label for="type">Delai Candidature</label>
-                                            <input type="date" class="form-control"   name="dateLimite" id="type" placeholder="Dernier delai de Candidature">
-                                        </div>
+                                </div>
+                                <div class="form-row mb-3">
+                                    <div class="form-group col-md-6">
+                                        <label for="duree">Durée</label>
+                                        <input name="duree" type="text" class="form-control" id="duree" placeholder="Durée de la formation">
                                     </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="duree">Publie le</label>
-                                            <input type="date" class="form-control"  name="datePublication" id="duree" placeholder="Date de Publication">
-                                        </div>
-                                        
-                                        <div class="form-group col-md-6">
-                                            <label for="type">Demarrage</label>
-                                            <input type="date" class="form-control"  name="dateDebut" id="type" placeholder="Demarrage des cours">
-                                        </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="dateLimite">Délai Candidature</label>
+                                        <input type="date" class="form-control" name="dateLimite" id="dateLimite">
                                     </div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                </div>
+                                <div class="form-row mb-3">
+                                    <div class="form-group col-md-6">
+                                        <label for="datePublication">Publié le</label>
+                                        <input type="date" class="form-control" name="datePublication" id="datePublication">
                                     </div>
-                                </form>
-                            </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="dateDebut">Démarrage</label>
+                                        <input type="date" class="form-control" name="dateDebut" id="dateDebut">
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-
+                </div>
+            
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
                     
                 </div>
             </main>
