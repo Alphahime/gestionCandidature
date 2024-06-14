@@ -1,13 +1,53 @@
-<!-- resources/views/candidatures/creer.blade.php -->
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Postuler</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <style>
+        body{
+            background-image:url("{{ asset('images/backgroundimg.png') }}");
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+        .imgfoot{
+            margin-top:3vh;
+            margin-left:5vh
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+        .form-control {
+            max-width: 100%;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 6vh;
+            background-color: #CE0033; 
+            color: white; 
+            padding: 10px; 
+            border-radius: 5px;
+        }
+        .btn{
+            background-color:#CE0033;
+            border:none;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <header>
+        <img src="{{ asset('images/logosimplon.png') }}" alt="" class="imgfoot" width="auto" height="50">
+    </header>
+
+    <div class="container form-container">
         <h1>Postuler pour une formation</h1>
     
         @if(session('success'))
@@ -66,6 +106,5 @@
             <button type="submit" class="btn btn-primary">Postuler</button>
         </form>
     </div>
-    
 </body>
 </html>
