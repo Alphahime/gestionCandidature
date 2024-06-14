@@ -16,7 +16,7 @@ Route::get('/indexdetail', [FormationController::class,'detail']);
 
 //Route pour le CRUD des Formations
 
-Route::get('/liste_Perso', [PersonnelController::class,'liste']);
+Route::get('/liste', [PersonnelController::class,'liste']);
 
 Route::get('/ajout_form', [PersonnelController::class,'ajouter']);
 
@@ -49,13 +49,59 @@ Route::get('/postuler', [CandidatureController::class, 'creer'])->name('candidat
 Route::post('/postuler', [CandidatureController::class, 'store'])->name('candidatures.store');
 
 
+//vers la page d'acceuil
+
+
 
 Route::get('/acceuil', [LandingController::class, 'landing'])->name('landing');
 Route::get('/candidatures', [CandidatureController::class, 'index'])->name('candidatures.index');
+
+Route::post('/candidatures/{id}/valider', [CandidatureController::class, 'valider'])->name('candidatures.valider');
+Route::post('/candidatures/{id}/rejeter', [CandidatureController::class, 'rejeter'])->name('candidatures.rejeter');
+
+Route::get('/indexdetail', [FormationController::class,'detail'])->name('formation.details');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Route::get('/liste', [PersonnelController::class,'liste']);
+
+
+// Route::get('/ajout_form', [PersonnelController::class,'ajouter']);
+
+// Route::post('/ajout_traitement', [FormationController::class,'ajouter_traitement']);
+
+// Route::get('/liste', [FormationController::class,'affiche_formation']);
+
+// Route::get('/modif_form/{id}', [FormationController::class,'Modifier']);
+
+// Route::post('/modif_form/{id}', [FormationController::class,'Modifier_traitement']);
+
+// Route::get('/supprimer_form/{id}', [FormationController::class,'supprimer']);
+
+Route::get('/detailFormation',[FormationController::class, 'detail']);
+
+Route::get('/personnel/connexion', [AuthController::class, 'connexionPersonnel'])->name('personnel.connexion');
+Route::post('/personnel/connexion', [AuthController::class, 'connexionPostPersonnel'])->name('personnel.connexion.post');
+
 Route::post('/candidatures/{id}/{action}', [CandidatureController::class, 'candidatureAction'])->name('candidatures.action');
 
 // Route::post('/candidatures/{id}/rejeter', [CandidatureController::class, 'rejeter'])->name('candidatures.rejeter');
 
 
 // Route::get('/bar', [TestController::class, 'bar']);
-
