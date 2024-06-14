@@ -108,6 +108,5 @@ Route::post('/candidatures/{id}/{action}', [CandidatureController::class, 'candi
 
 Route::post('/candidatures/{id}/valider', [CandidatureController::class, 'valider'])->name('candidatures.valider');
 Route::post('/candidatures/{id}/rejeter', [CandidatureController::class, 'rejeter'])->name('candidatures.rejeter');
-// routes/web.php
-Route::get('/candidatures/{id}', [CandidatureController::class, 'detail'])->name('candidatures.detail');
 
+Route::get('/candidatures/{id}', [CandidatureController::class, 'detail'])->name('candidatures.detail');

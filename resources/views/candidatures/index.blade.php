@@ -151,8 +151,8 @@
                                         <td>{{ $candidature->age }}</td>
                                         <td>{{ $candidature->telephone }}</td>
                                         <td>{{ $candidature->adresse }}</td>
-                                        <td>{{ Str::limit($candidature->motivation, 10) }}</td>
-                                        <td>{{ Str::limit($candidature->biographie, 10) }}</td>
+                                        <td>{{ $candidature->motivation}}</td>
+                                        <td>{{ $candidature->biographie }}</td>
                                         <td><a href="{{ asset('storage/' . $candidature->cv) }}" target="_blank">Voir CV</a></td>
                                         <td>{{ $candidature->created_at->format('d/m/Y H:i') }}</td>
                                         <td>
