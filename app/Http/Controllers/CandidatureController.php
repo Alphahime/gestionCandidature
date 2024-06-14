@@ -44,7 +44,7 @@ class CandidatureController extends Controller
             'cv' => $cvPath,
         ]);
 
-        return redirect()->route('candidatures.creer')->with('success', 'Votre candidature a été soumise avec succès.');
+        return redirect()->route('candidatures.creer')->with('success', "Votre candidature a été soumise avec succès.Vous serait notifié par email pour l'état de votre candidature");
     }
 
     public function index()
