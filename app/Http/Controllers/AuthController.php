@@ -19,6 +19,11 @@ class AuthController extends Controller
     {
         $request->validate([
             'nom' => 'required|min:3',
+            'prenom' => 'required|min:3',
+            'telephone' => 'required',
+            'adresse' => 'required|min:3',
+            'age' => 'required',
+            'cv' => 'required',
             'email' => 'required|email|unique:candidats,email',
             'mot_de_passe' => 'required|min:8|max:20'
         ]);
@@ -66,7 +71,7 @@ class AuthController extends Controller
         } else {
             // Authentification du candidat
             if (Auth::guard('web')->attempt($credentials)) {
-                return redirect()->route('index')->with('success', 'Connexion réussie');
+                return redirect()->route('landing')->with('success', 'Connexion réussie');
             }
         }
 

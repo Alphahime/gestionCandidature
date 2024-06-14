@@ -15,7 +15,6 @@ Route::get('/', function () {
 Route::get('/indexdetail', [FormationController::class,'detail']);
 
 //Route pour le CRUD des Formations
-
 Route::get('/liste', [PersonnelController::class,'liste']);
 
 Route::get('/ajout_form', [PersonnelController::class,'ajouter']);
@@ -31,7 +30,6 @@ Route::post('/modif_form/{id}', [FormationController::class,'Modifier_traitement
 Route::get('/supprimer_form/{id}', [FormationController::class,'supprimer']);
 
 // Routes pour l'authentification
-
 Route::get('/inscription', [AuthController::class, 'inscription'])->name('inscription');
 Route::post('/inscription', [AuthController::class, 'inscriptionPost'])->name('inscription');
 
@@ -42,40 +40,18 @@ Route::get('/personnel/connexion', [AuthController::class, 'connexionPersonnel']
 Route::post('/personnel/connexion', [AuthController::class, 'connexionPostPersonnel'])->name('connexion');
 
 // Routes pour postuler
-
-
 // route vers le formulaire pour soumettre sa candidature
 Route::get('/postuler', [CandidatureController::class, 'creer'])->name('candidatures.creer');
 Route::post('/postuler', [CandidatureController::class, 'store'])->name('candidatures.store');
 
 
 //vers la page d'acceuil
-
-
-
-
 Route::get('/acceuil', [LandingController::class, 'landing'])->name('landing');
 Route::get('/candidatures', [CandidatureController::class, 'index'])->name('candidatures.index');
 
 Route::post('/candidatures/{id}/action', [CandidatureController::class, 'action'])->name('candidatures.action');
 
 Route::get('/indexdetail', [FormationController::class,'detail'])->name('formation.details');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

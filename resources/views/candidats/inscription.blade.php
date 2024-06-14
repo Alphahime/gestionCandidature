@@ -112,7 +112,7 @@
             <div><label for="">Mot de passe</label></div>
             <div><input type="password" name="mot_de_passe" class="form-control" id="mot_de_passe" required></div>
             <button class="connect">S'inscrire</button>
-            <p>Vous n’avez pas encore de compte ? <a href="/inscription" class="lien">Inscrivez-vous</a>  </p>
+            <p>Vous n’avez pas encore de compte ? <a href="{{route('inscription')}}" class="lien">Inscrivez-vous</a>  </p>
             </form>
         </div>
     </div>
