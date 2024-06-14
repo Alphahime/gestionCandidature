@@ -56,7 +56,6 @@ Route::post('/postuler', [CandidatureController::class, 'store'])->name('candida
 
 Route::get('/acceuil', [LandingController::class, 'landing'])->name('landing');
 Route::get('/candidatures', [CandidatureController::class, 'index'])->name('candidatures.index');
-<<<<<<< HEAD
 
 Route::post('/candidatures/{id}/action', [CandidatureController::class, 'action'])->name('candidatures.action');
 
@@ -106,9 +105,9 @@ Route::post('/candidatures/{id}/{action}', [CandidatureController::class, 'candi
 
 
 // Route::get('/bar', [TestController::class, 'bar']);
-=======
+
 Route::post('/candidatures/{id}/valider', [CandidatureController::class, 'valider'])->name('candidatures.valider');
 Route::post('/candidatures/{id}/rejeter', [CandidatureController::class, 'rejeter'])->name('candidatures.rejeter');
 // routes/web.php
 Route::get('/candidatures/{id}', [CandidatureController::class, 'detail'])->name('candidatures.detail');
->>>>>>> feature/design
+
