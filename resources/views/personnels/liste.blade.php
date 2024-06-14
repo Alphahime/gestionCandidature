@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Simplon - Liste des Formations</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+
+    <title>Dashboard Personnel</title>
+    <style>
+       body {
+            display: flex;
+            margin:0
+        }
+
         nav {
             width: 250px;
             padding: 20px;
@@ -35,7 +44,7 @@
             color: white;
             background-color: #CE0033;
         }
-        box-icon:hover {
+        box-icon:hover  {
             color: white;
         }
         header {
@@ -46,7 +55,9 @@
             margin-bottom: 14vh;
         }
         .apparence:hover {
+
             color: white;
+
             background-color: #CE0033;
         }
         button {
@@ -62,6 +73,7 @@
             justify-content: center;
             transition: background-color 0.3s ease;
         }
+
         .card img {
             height: 200px;
             object-fit: cover;
@@ -234,3 +246,30 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+
+        .content-page {
+            flex: 1;
+            padding: 20px;
+        }
+        .background{
+            background-color:#CE0033;
+            padding:5vh;
+            color:white
+        }
+    </style>
+</head>
+<body>
+ <header>
+    <nav>
+        <li><a href=""><img src="{{ asset('images/logosimplon.png') }}" alt="" class="imgfoot" width="auto" height="70"></a></li>
+        <li><a href="" class="lien"><box-icon type='solid' name='home' ></box-icon>Tableau de bord</a></li>
+        <li> <a href="/ajout_form" class="btn btn-sm btn-outline-secondary"><box-icon type='solid' name='book-reader'></box-icon>Ajouter</a></li>
+        <li><a href="" class="lien"><box-icon name='list-ul'></box-icon>Liste des candidatures</a></li>
+        <li><a href="" class="lien"><box-icon type='solid' name='bell-ring'></box-icon>Notifications</a></li>
+        <li class="apparence"><a href=""><box-icon name='color'></box-icon>Apparence</a></li>
+        <a href="">
+     <button> <i class="fas fa-sign-out-alt"></i>Déconnexion</button>
+        </a>
+    </nav>
+ </header>
+
