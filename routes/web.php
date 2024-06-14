@@ -8,9 +8,11 @@ use App\Http\Controllers\CandidatureController;
 use App\Http\Controllers\TestController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome'); 
+// }); 
+
+Route::get('/', [LandingController::class,'landing']);
 
 Route::get('/indexdetail', [FormationController::class,'detail']);
 
