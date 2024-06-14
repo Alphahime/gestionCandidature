@@ -8,30 +8,50 @@
 </head>
 <body>
     <header>
-     <li><img src="{{ asset('images/logo.png') }}" alt="" class="logo"></li>
+        <li><img src="{{ asset('images/logo.png') }}" alt="" class="logo"></li>
         <nav>
             <li>Acceuil</li>
             <li>Nos formations</li>
-            <li>Professionnels </li>
+            <li>Professionnels</li>
             <li>Contact</li>
         </nav>
-        <div  class="btn-avatar" >
-        <div> <img src="{{ asset('images/Avatar.png') }}" alt="" class="avatar"></div>  
-        <button>Connexion</button>
+        <div class="btn-avatar">
+            <div><img src="{{ asset('images/Avatar.png') }}" alt="" class="avatar"></div>  
+            <button>Connexion</button>
         </div>
-
     </header>
-
+    <div class="section-nos-formations">
+        <h1>Nos Formations</h1>
+        <div class="all-card-contain">
+            <div class="box-card">
+            <img src="{{ asset('images/africanwoman.jpg') }}" alt="">
+                <div class="card-label">Développement web</div>
+                <button class="btn-formation">Découvrez la formation</button>
+                <div class="horizontal-bar"></div>
+            </div>
+            <div class="box-card">
+                <div class="card-label">Référent Digitale</div>
+                <button class="btn-formation">Découvrez la formation</button>
+                <div class="horizontal-bar"></div>
+            </div>
+            <div class="box-card">
+                <img src="{{ asset('images/africanwoman.jpg') }}" alt="">
+                <div class="card-label">Référent Digitale</div>
+                <button class="btn-formation">Découvrez la formation</button>
+                <div class="horizontal-bar"></div>
+            </div>
+        </div>  
+    </div>
     <footer>
-        <div >
+        <div>
             <img src="{{ asset('images/logosimplon.png') }}" alt="" class="imgfoot">
             <p>Suivez-nous</p>
             <p>@SimplonSenegal</p>
             <div class="container_icon">
-                <div class="icon"><box-icon name='twitter' type='logo' color='white' ></box-icon></div>
-                <div class="icon"><box-icon name='instagram-alt' type='logo'  color='white' ></box-icon></div>
-                <div class="icon"><box-icon name='youtube' type='logo'  color='white' ></box-icon></div>
-                <div class="icon"><box-icon name='linkedin-square' type='logo'  color='white' ></box-icon></div>
+                <div class="icon"><box-icon name='twitter' type='logo' color='white'></box-icon></div>
+                <div class="icon"><box-icon name='instagram-alt' type='logo' color='white'></box-icon></div>
+                <div class="icon"><box-icon name='youtube' type='logo' color='white'></box-icon></div>
+                <div class="icon"><box-icon name='linkedin-square' type='logo' color='white'></box-icon></div>
             </div>
         </div>
         <div>
@@ -42,8 +62,8 @@
             <p>Contact</p>
         </div>
         <div>
-            <p class="lien">Nos cordonnées</p>
-            <p>Adresse:Cité Keur Gorgui villa AD65 </p>
+            <p class="lien">Nos coordonnées</p>
+            <p>Adresse: Cité Keur Gorgui villa AD65</p>
             <p>Téléphone fixe : +221 33 824 05 15</p>
             <p>Mobile : +221 77 499 71 69</p>
             <p>Email : simplon.senegal@simplon.co</p>
@@ -51,91 +71,160 @@
         <div class="newsletter">
             <p class="lien">Newsletter</p>
             <p class="paragraphe">Souscrivez à notre newsletter en renseignant votre adresse mail.</p>
-            <button>Veuillez entrer votre adresse email</button>
+            <input type="email" placeholder="Veuillez entrer votre adresse email" class="newsletter-input">
+            <button class="btn-newsletter">S'abonner</button>
         </div>
     </footer>
 </body>
 <style>
-    body{
-        font-family:sans-serif
+    body {
+        font-family: sans-serif;
     }
-    header{
-        display:flex;
-        justify-content:space-around;
-        margin-top:10px
+    h1{
+        margin-bottom:10vh
     }
-    nav{
+    header {
         display: flex;
-padding: 10px 0px;
-justify-content: center;
-align-items: center;
-gap: 60px;
-
+        justify-content: space-around;
+        margin-top: 10px;
     }
-    li{
-        list-style:none;
+    nav {
+        display: flex;
+        padding: 10px 0;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+    }
+    li {
+        list-style: none;
         color: #CE0033;
         font-size: 16px;
-       font-weight: 700;
-      line-height: normal;
-      font-family:sans-serif
+        font-weight: 700;
+        line-height: normal;
+        font-family: sans-serif;
     }
-    .logo{
-        width:auto ;
-        height:60px
+    .logo {
+        width: auto;
+        height: 60px;
     }
-    .avatar{
-        width:auto ;
-        height:30px;
+    .avatar {
+        width: auto;
+        height: 30px;
     }
-    .btn-avatar{
-
-         display: inline-flex;
-       padding: 10px 24px 10px 10px;
-       justify-content: center;
+    .btn-avatar {
+        display: inline-flex;
+        padding: 10px 24px 10px 10px;
+        justify-content: center;
         align-items: center;
         gap: 10px;
         border-radius: 100px;
-       background: #CE0033; 
-    }
-    .btn-avatar button{
-        border:none;
         background: #CE0033;
-        color: var(--Colors-Neutral-White, var(--Blanc, #FFF));
+    }
+    .btn-avatar button {
+        border: none;
+        background: #CE0033;
+        color: #FFF;
         font-size: 16px;
-      font-style: normal;
-     font-weight: 700;
+        font-weight: 700;
     }
-    
-    .lien{
-        font-size:1.3rem;
-        font-weight:bold;
-        color:#CE0033
+    .section-nos-formations {
+        background-color: #f0f0f0;
+        padding: 50px 20px;
+        text-align: center;
     }
-    .imgfoot{
-        width:auto;
-        height:75px
+    .all-card-contain {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
     }
-    .paragraphe{
+    .box-card {
+        position: relative;
+        background-color: #fff;
+        padding: 20px;
+        width: 30%;
+        height: 400px;
+        margin-bottom: 2rem;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    .box-card .card-label {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #CE0033;
+        color: #fff;
+        width: 250px;
+        height: 50px;
+        font-weight: bold;
+        border-top-right-radius: 2rem;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+    .horizontal-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: #CE0033;
+    }
+    .btn-formation, .btn-postuler {
+        margin: 10px 0;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #fff;
+        background-color: #CE0033;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .btn-formation:hover, .btn-postuler:hover {
+        background-color: #a80026;
+    }
+    .lien {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #CE0033;
+    }
+    .imgfoot {
+        width: auto;
+        height: 75px;
+    }
+    .paragraphe {
         width: 240px;
     }
-    .newsletter button{
-        background-color:white;
-        font-size:15px;
-        border:solid;
-        box-shadow:10px;
-       border:none;
-       box-shadow:10px 5px 10px 2px gray;
-       border-color:white;
-        padding-top:25px;
-        padding-bottom:20px;
-        border-bottom:solid #CE0033 ;
-        border-bottom-width:5px
+    .newsletter-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
     }
-    footer{
-        display:flex;
-        justify-content:space-around;
-        margin-top:45px
+    .btn-newsletter {
+        background-color: #CE0033;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .btn-newsletter:hover {
+        background-color: #a80026;
+    }
+    footer {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 45px;
     }
 </style>
 </html>
