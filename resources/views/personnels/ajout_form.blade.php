@@ -8,147 +8,92 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <title>Dashboard Personnel</title>
     <style>
-       body {
-            display: flex;
-            margin:0
+      body{
+            background-image:url("{{ asset('images/backgroundimg.png') }}");
+            background-repeat: no-repeat;
+            background-size:cover;
         }
-        nav {
-            width: 250px;
+        .imgfoot{
+            margin-top:3vh;
+            margin-left:5vh
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
             padding: 20px;
-            background-color: #fff;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-            height: 100vh;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
         }
-        li {
-            list-style: none;
+        .form-control {
+            max-width: 100%;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            text-align: center;
             margin-bottom: 6vh;
+            background-color: #CE0033; 
+            color: white; 
+            padding: 10px; 
+            border-radius: 5px;
         }
-        a {
-            text-decoration: none;
-            font-size: 1.3rem;
-            color: black;
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            transition: all 0.3s ease;
-        }
-        a box-icon {
-            margin-right: 10px;
-        }
-        .lien:hover {
-            color: white;
-            background-color: #CE0033;
-        }
-        box-icon:hover  {
-            color: white;
-        }
-        header {
-            /* margin-top: 5vh; */
-            /* margin-left: 3vh; */
-        }
-        .apparence {
-            margin-bottom: 14vh;
-        }
-        .apparence:hover {
-           color:white;
-            background-color: #CE0033;
-        }
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            border: none;
-            background-color: #CE0033;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s ease;
-        }
-        .content-page {
-            flex: 1;
-            padding: 20px;
-        }
-        .background{
+        .btn{
             background-color:#CE0033;
-            padding:5vh;
-            color:white
+            border:none;
         }
-        
     </style>
 </head>
 <body>
- <header>
-    <nav>
-        <li><a href=""><img src="{{ asset('images/logosimplon.png') }}" alt="" class="imgfoot" width="auto" height="70"></a></li>
-        <li><a href="" class="lien"><box-icon type='solid' name='home' ></box-icon>Tableau de bord</a></li>
-        <li> <a href="/ajout_form" class="btn btn-sm btn-outline-secondary"><box-icon type='solid' name='book-reader'></box-icon>Ajouter</a></li>
-        <li><a href="candidatures" class="lien"><box-icon name='list-ul'></box-icon>Liste des candidatures</a></li>
-        <li><a href="" class="lien"><box-icon type='solid' name='bell-ring'></box-icon>Notifications</a></li>
-        <li class="apparence"><a href=""><box-icon name='color'></box-icon>Apparence</a></li>
-        <a href="">
-     <button> <i class="fas fa-sign-out-alt"></i>Déconnexion</button>
-        </a>
-    </nav>
- </header>
- <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Ajouter une formation</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
+<header>
+        <img src="{{ asset('images/logosimplon.png') }}" alt="" class="imgfoot" width="auto" height="50">
+    </header>
+
+            <div class="container form-container">
+                 <h1>Ajouter une formation</h1>
+    
+                @if(session('success'))
+                  <div class="alert alert-success">
+                    {{ session('success') }}
+                   </div>
+                @endif
                 <form action='/ajout_traitement' method="POST">
                     @csrf
-                    <div class="form-row mb-3">
-                        <div class="form-group col-md-6">
+                    <div class="form-group">
                             <label for="libelle">Libellé</label>
                             <input name="libelle" type="text" class="form-control" id="libelle" placeholder="Donner le nom de la formation">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group">
                             <label for="lieu">Lieu</label>
                             <input name="lieu" type="text" class="form-control" id="lieu" placeholder="Lieu de la formation">
                         </div>
-                    </div>
-                    <div class="form-row mb-3">
-                        <div class="form-group col-md-6">
+                        <div class="form-group">
                             <label for="description">Description</label>
                             <textarea name="description" class="form-control" id="description" placeholder="Donnez une description de la formation" rows="3"></textarea>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group >
                             <label for="horaire">Horaire</label>
                             <input name="horaire" type="text" class="form-control" id="horaire" placeholder="Horaire de la formation">
                         </div>
-                    </div>
-                    <div class="form-row mb-3">
-                        <div class="form-group col-md-6">
+                        <div class="form-group">
                             <label for="duree">Durée</label>
                             <input name="duree" type="text" class="form-control" id="duree" placeholder="Durée de la formation">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group">
                             <label for="dateLimite">Délai Candidature</label>
                             <input type="date" class="form-control" name="dateLimite" id="dateLimite">
                         </div>
-                    </div>
-                    <div class="form-row mb-3">
-                        <div class="form-group col-md-6">
+                        <div class="form-group">
                             <label for="datePublication">Publié le</label>
                             <input type="date" class="form-control" name="datePublication" id="datePublication">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group">
                             <label for="dateDebut">Démarrage</label>
                             <input type="date" class="form-control" name="dateDebut" id="dateDebut">
                         </div>
-                    </div>
-                    <div class="text-center">
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
-                    </div>
                 </form>
             </div>
-        </div>
-    </div>
-</main>
 </body>
 </html>
