@@ -14,7 +14,13 @@ Route::get('/', function () {
 
 Route::get('/indexdetail', [FormationController::class,'detail']);
 
+
 //Route pour le CRUD des Formations
+
+Route::get('/indexdetail', [FormationController::class,'detail']);
+Route::get('/explore', [FormationController::class,'allformation']);
+
+
 Route::get('/liste', [PersonnelController::class,'liste']);
 
 Route::get('/ajout_form', [PersonnelController::class,'ajouter']);
@@ -81,3 +87,8 @@ Route::post('/candidatures/{id}/{action}', [CandidatureController::class, 'candi
 
 
 // Route::get('/bar', [TestController::class, 'bar']);
+
+Route::post('/candidatures/{id}/valider', [CandidatureController::class, 'valider'])->name('candidatures.valider');
+Route::post('/candidatures/{id}/rejeter', [CandidatureController::class, 'rejeter'])->name('candidatures.rejeter');
+
+Route::get('/candidatures/{id}', [CandidatureController::class, 'detail'])->name('candidatures.detail');

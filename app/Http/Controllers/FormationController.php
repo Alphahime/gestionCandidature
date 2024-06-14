@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 class FormationController extends Controller
 {
 
-
+ public function allformation(){
+    return view('formations.allformation');
+ }
     public function affiche_formation(){
 
         $formations = Formation::all();
         return view('personnels.liste', compact('formations'));
     }
-
-
 
 
     public function ajouter_traitement(Request $request){

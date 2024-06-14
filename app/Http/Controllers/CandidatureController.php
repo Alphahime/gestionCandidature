@@ -77,4 +77,10 @@ class CandidatureController extends Controller
     return back()->with('error', 'Action non reconnue');
 }
 
+public function detail($id)
+{
+    $candidature = Candidat::findOrFail($id); // Récupérer la candidature par ID
+
+    return view('candidatures.detail', compact('candidature'));
+}
 }
