@@ -14,13 +14,12 @@ use App\Http\Controllers\TestController;
 
 Route::get('/', [LandingController::class,'landing']);
 
-Route::get('/indexdetail', [FormationController::class,'detail']);
 
 
 //Route pour le CRUD des Formations
 
-Route::get('/indexdetail', [FormationController::class,'detail']);
-Route::get('/explore', [FormationController::class,'allformation']);
+Route::get('/indexdetail', [FormationController::class,'detail'])->name('details_formation');
+Route::get('/explore', [FormationController::class,'allformation'])->name('nos_formations');
 
 
 Route::get('/liste', [PersonnelController::class,'liste']);
@@ -59,7 +58,6 @@ Route::get('/candidatures', [CandidatureController::class, 'index'])->name('cand
 
 Route::post('/candidatures/{id}/action', [CandidatureController::class, 'action'])->name('candidatures.action');
 
-Route::get('/indexdetail', [FormationController::class,'detail'])->name('formation.details');
 
 
 
@@ -78,7 +76,7 @@ Route::get('/indexdetail', [FormationController::class,'detail'])->name('formati
 
 // Route::get('/supprimer_form/{id}', [FormationController::class,'supprimer']);
 
-Route::get('/detailFormation',[FormationController::class, 'detail']);
+Route::get('/detailFormation',[FormationController::class, 'detail'])->name('formation.details');
 
 Route::get('/personnel/connexion', [AuthController::class, 'connexionPersonnel'])->name('personnel.connexion');
 Route::post('/personnel/connexion', [AuthController::class, 'connexionPostPersonnel'])->name('personnel.connexion.post');

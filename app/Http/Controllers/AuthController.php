@@ -72,7 +72,7 @@ class AuthController extends Controller
         } else {
             // Authentification du candidat
             if (Auth::guard('web')->attempt($credentials)) {
-                return redirect()->route('landing')->with('success', 'Connexion réussie');
+                return redirect()->intended(route('candidatures.creer'))->with('success', 'Connexion réussie');
             }
         }
 
