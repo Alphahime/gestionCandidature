@@ -80,9 +80,10 @@ public function rejeter($id)
     return redirect()->back()->with('success', 'La candidature a été rejetée.');
 }
 
-public function details($id)
+public function detail($id)
 {
-    $candidature = Candidature::findOrFail($id);
+    $candidature = Candidat::findOrFail($id); // Récupérer la candidature par ID
+
     return view('candidatures.detail', compact('candidature'));
 }
 }

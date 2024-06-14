@@ -49,6 +49,5 @@ Route::get('/acceuil', [LandingController::class, 'landing'])->name('landing');
 Route::get('/candidatures', [CandidatureController::class, 'index'])->name('candidatures.index');
 Route::post('/candidatures/{id}/valider', [CandidatureController::class, 'valider'])->name('candidatures.valider');
 Route::post('/candidatures/{id}/rejeter', [CandidatureController::class, 'rejeter'])->name('candidatures.rejeter');
-
-
-Route::get('/candidatures/{id}/detail', [CandidatureController::class, 'details'])->name('candidatures.detail');
+// routes/web.php
+Route::get('/candidatures/{id}', [CandidatureController::class, 'detail'])->name('candidatures.detail');

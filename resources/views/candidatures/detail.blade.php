@@ -1,3 +1,4 @@
+<!-- resources/views/candidatures/detail.blade.php -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -52,23 +53,83 @@
         .card {
             margin-top: 20px;
         }
+
+        .card-custom {
+            background-color: #e51d3e;
+            color: white;
+        }
+
+        .content {
+            margin-left: 270px; /* Ajuster pour laisser de la place à la sidebar */
+        }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
-                <h2>Biographie</h2>
-                <p>{{ $candidature->biographie }}</p>
-                <h2>Motivation</h2>
-                <p>{{ $candidature->motivation }}</p>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $candidature->nom }} {{ $candidature->prenom }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ $candidature->email }}</h6>
-                        <p class="card-text">{{ $candidature->adresse }}</p>
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <div class="logo text-center my-4">
+                        <img src="logo.png" alt="Simplon Senegal" class="img-fluid">
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <i class="fas fa-home"></i>
+                                Tableau de bord
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-file"></i>
+                                Formations
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-users"></i>
+                                Liste des Candidats
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-bell"></i>
+                                Notifications
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-cogs"></i>
+                                Apparence
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="logout text-center my-4">
+                        <button class="btn btn-danger">
+                            <i class="fas fa-sign-out-alt"></i> Déconnexion
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="col-md-10 content">
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h2>Biographie</h2>
+                            <p>{{ $candidature->biographie }}</p>
+                            <h2>Motivation</h2>
+                            <p>{{ $candidature->motivation }}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card card-custom">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $candidature->nom }} {{ $candidature->prenom }}</h5>
+                                    <h6 class="card-subtitle mb-2 text-white">{{ $candidature->email }}</h6>
+                                    <p class="card-text">{{ $candidature->adresse }}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
