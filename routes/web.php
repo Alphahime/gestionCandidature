@@ -57,7 +57,6 @@ Route::post('/postuler', [CandidatureController::class, 'store'])->name('candida
 Route::get('/acceuil', [LandingController::class, 'landing'])->name('landing');
 Route::get('/candidatures', [CandidatureController::class, 'index'])->name('candidatures.index');
 
-
 Route::post('/candidatures/{id}/action', [CandidatureController::class, 'action'])->name('candidatures.action');
 
 Route::get('/indexdetail', [FormationController::class,'detail'])->name('formation.details');
