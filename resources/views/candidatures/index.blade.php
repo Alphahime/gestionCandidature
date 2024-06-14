@@ -72,6 +72,7 @@
             background-color: #e51d3e;
             color: white;
         }
+       
     </style>
 </head>
 <body>
