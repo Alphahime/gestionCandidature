@@ -323,6 +323,31 @@ gap: 60px;
     border-bottom:solid #CE0033 ;
     border-bottom-width:5px
 }
+.explorer-container {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0; /* Ajuster la marge pour un espacement approprié */
+}
+
+.explorer-button {
+    display: flex;
+    align-items: center;
+    background-color: #CE0033;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.icon-fleche {
+    margin-right: 10px;
+    width: 20px; /* Ajuster la taille de l'icône selon vos besoins */
+    height: auto;
+}
+
 
     </style>
 </head>
@@ -367,7 +392,12 @@ gap: 60px;
             </div>
         </div>
     </div>
-
+    <div class="explorer-container">
+        <button class="explorer-button">
+            <img src="{{ asset('images/fleche.png') }}" alt="Flèche" class="icon-fleche"> Explorer
+        </button>
+    </div>
+    
     <div class="section-nos-formations">
         <h1>Nos Formations</h1>
         <div class="all-card-contain">
