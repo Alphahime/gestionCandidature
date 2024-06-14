@@ -65,10 +65,6 @@
 
         .btn-outline-secondary:hover {
             background-color: #e51d3e;
-            color: white;
-        }
-
-        .table thead th {
             background-color: #e51d3e;
             color: white;
         }
