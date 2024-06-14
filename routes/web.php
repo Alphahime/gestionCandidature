@@ -41,8 +41,6 @@ Route::post('/connexion', [AuthController::class, 'connexionPost'])->name('conne
 Route::get('/personnel/connexion', [AuthController::class, 'connexionPersonnel'])->name('connexion');
 Route::post('/personnel/connexion', [AuthController::class, 'connexionPostPersonnel'])->name('connexion');
 
-// Routes pour postuler
-
 
 // route vers le formulaire pour soumettre sa candidature
 Route::get('/postuler', [CandidatureController::class, 'creer'])->name('candidatures.creer');
@@ -51,48 +49,12 @@ Route::post('/postuler', [CandidatureController::class, 'store'])->name('candida
 
 //vers la page d'acceuil
 
-
-
-
 Route::get('/acceuil', [LandingController::class, 'landing'])->name('landing');
 Route::get('/candidatures', [CandidatureController::class, 'index'])->name('candidatures.index');
 
 Route::post('/candidatures/{id}/action', [CandidatureController::class, 'action'])->name('candidatures.action');
 
 Route::get('/indexdetail', [FormationController::class,'detail'])->name('formation.details');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Route::get('/liste', [PersonnelController::class,'liste']);
-
-
-// Route::get('/ajout_form', [PersonnelController::class,'ajouter']);
-
-// Route::post('/ajout_traitement', [FormationController::class,'ajouter_traitement']);
-
-// Route::get('/liste', [FormationController::class,'affiche_formation']);
-
-// Route::get('/modif_form/{id}', [FormationController::class,'Modifier']);
-
-// Route::post('/modif_form/{id}', [FormationController::class,'Modifier_traitement']);
-
-// Route::get('/supprimer_form/{id}', [FormationController::class,'supprimer']);
 
 Route::get('/detailFormation',[FormationController::class, 'detail']);
 
@@ -101,7 +63,3 @@ Route::post('/personnel/connexion', [AuthController::class, 'connexionPostPerson
 
 Route::post('/candidatures/{id}/{action}', [CandidatureController::class, 'candidatureAction'])->name('candidatures.action');
 
-// Route::post('/candidatures/{id}/rejeter', [CandidatureController::class, 'rejeter'])->name('candidatures.rejeter');
-
-
-// Route::get('/bar', [TestController::class, 'bar']);
