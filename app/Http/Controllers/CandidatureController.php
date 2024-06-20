@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Candidature;
 use App\Models\Candidat;
 use App\Mail\CandidatureValidee;
 use App\Mail\CandidatureRejetee;
@@ -18,6 +17,7 @@ class CandidatureController extends Controller
 
     public function store(Request $request)
     {
+        // Validation des données de candidature
         $request->validate([
             'nom' => 'required|string',
             'prenom' => 'required|string',
@@ -30,8 +30,10 @@ class CandidatureController extends Controller
             'cv' => 'required|file|mimes:pdf,doc,docx|max:2048',
         ]);
 
+        // Stockage du CV dans le dossier 'cvs' du répertoire 'public'
         $cvPath = $request->file('cv')->store('cvs', 'public');
 
+        // Création d'un nouveau candidat dans la base de données
         Candidat::create([
             'nom' => $request->nom,
             'prenom' => $request->prenom,
@@ -44,37 +46,50 @@ class CandidatureController extends Controller
             'cv' => $cvPath,
         ]);
 
-        return redirect()->route('candidatures.creer')->with('success', 'Votre candidature a été soumise avec succès.');
+        // Redirection vers la page de création de candidature avec un message de succès
+        return redirect()->route('candidatures.creer')->with('success', "Votre candidature a été soumise avec succès. Vous serez notifié par email pour l'état de votre candidature");
     }
 
     public function index()
     {
-        $candidatures = Candidat::latest()->get(); // Récupère toutes les candidatures, triées par date de création décroissante
+        // Récupération de toutes les candidatures triées par date de création décroissante
+        $candidatures = Candidat::latest()->get();
 
+        // Affichage de la vue 'candidatures.index' avec les données des candidatures
         return view('candidatures.index', compact('candidatures'));
     }
 
+    public function candidatureAction(Request $request, $id)
+    {
+        $request->validate([
+            'action' => 'required|in:valider,rejeter', // Validation de l'action
+        ]);
 
+        $candidat = Candidat::findOrFail($id); // Récupération du candidat par son ID
 
-    public function candidatureAction(Request $request, $id, $action)
-{
-    $candidat = Candidat::find($id);
+        // Envoi d'email et mise à jour de l'état du candidat en fonction de l'action
+        if ($request->action == 'valider') {
+            Mail::to($candidat->email)->send(new CandidatureValidee($candidat));
+            // Mettre à jour l'état du candidat si nécessaire
+            $candidat->etat = 'validee';
+        } elseif ($request->action == 'rejeter') {
+            Mail::to($candidat->email)->send(new CandidatureRejetee($candidat));
+            // Mettre à jour l'état du candidat si nécessaire
+            $candidat->etat = 'rejetee';
+        }
 
-    if (!$candidat) {
-        return back()->with('error', 'Candidat non trouvé');
+        $candidat->save(); // Sauvegarde des modifications du candidat
+
+        // Redirection vers la liste des candidatures avec un message de succès
+        return redirect()->route('candidatures.index')->with('success', 'Action effectuée avec succès.');
     }
 
-    if ($action == 'valider') {
-        Mail::to($candidat->email)->send(new CandidatureValidee($candidat));
-        // Mettre à jour l'état ou faire d'autres actions nécessaires après validation
-        return back()->with('success', 'Candidature validée et email envoyé');
-    } elseif ($action == 'rejeter') {
-        Mail::to($candidat->email)->send(new CandidatureRejetee($candidat));
-        // Mettre à jour l'état ou faire d'autres actions nécessaires après rejet
-        return back()->with('success', 'Candidature rejetée et email envoyé');
+    public function detail($id)
+    {
+        // Récupération du candidat par son ID pour afficher les détails
+        $candidature = Candidat::findOrFail($id);
+
+        // Affichage de la vue 'candidatures.detail' avec les détails du candidat
+        return view('candidatures.detail', compact('candidature'));
     }
-
-    return back()->with('error', 'Action non reconnue');
-}
-
 }

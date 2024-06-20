@@ -21,6 +21,7 @@ class Candidat extends Authenticatable
         'biographie',
         'motivation',
         'cv',
+        'etat',
     ];
 
     protected $hidden = [

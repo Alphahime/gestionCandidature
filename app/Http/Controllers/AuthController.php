@@ -19,6 +19,11 @@ class AuthController extends Controller
     {
         $request->validate([
             'nom' => 'required|min:3',
+            'prenom' => 'required|min:3',
+            'telephone' => 'required',
+            'adresse' => 'required|min:3',
+            'age' => 'required',
+            'cv' => 'required',
             'email' => 'required|email|unique:candidats,email',
             'mot_de_passe' => 'required|min:8|max:20'
         ]);
@@ -34,7 +39,6 @@ class AuthController extends Controller
         $candidat->cv = $request->cv;
         $candidat->email = $request->email;
         $candidat->mot_de_passe = Hash::make($request->mot_de_passe);
-
         $candidat->save();
 
         return back()->with('success', 'Inscription réussie');
@@ -61,12 +65,12 @@ class AuthController extends Controller
         if ($request->has('personnel')) {
             // Authentification du personnel
             if (Auth::guard('personnel')->attempt($credentials)) {
-                return redirect()->route('personnel.dashboard')->with('success', 'Connexion réussie');
+                return redirect()->route('formation.liste')->with('success', 'Connexion réussie');
             }
         } else {
             // Authentification du candidat
             if (Auth::guard('web')->attempt($credentials)) {
-                return redirect()->route('index')->with('success', 'Connexion réussie');
+                return redirect()->intended(route('candidatures.creer'))->with('success', 'Connexion réussie');
             }
         }
 
@@ -88,12 +92,18 @@ class AuthController extends Controller
 
         if ($personnel && md5($request->mot_de_passe) == $personnel->mot_de_passe) {
             Auth::login($personnel);
-            return true;
+            return redirect()->route('candidatures.index')->with('success', 'Connexion réussie');
         }
 
         return false;
     
     
+    }
+
+    public function deconnexionPersonnel()
+    {
+        Auth::logout();
+        return redirect()->route('personnel.connexion');
     }
 
     

@@ -33,7 +33,7 @@
                     <div class="mb-3">
                         <div class="d-grid">
                             <input type="hidden" name="personnel" value="1">
-                            <button class="btn btn-primary">Se connecter</button>
+                            <button class="btn btn-primary" style="background-color: #CE0033">Se connecter</button>
                         </div>
                     </div>
                 </form>

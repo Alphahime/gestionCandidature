@@ -101,7 +101,7 @@
             <div><input type="email" name="email" class="form-control" id="email" placeholder="adiaoumyf@gmail.com" required></div>
             <div><label for="">Mot de passe</label></div>
             <div><input type="password" name="mot_de_passe" class="form-control" id="mot_de_passe" required></div>
-            <button class="connect">Se connecter</button>
+            <button class="connect" style="background-color: #CE0033">Se connecter</button>
             <p>Vous n’avez pas encore de compte ? <a href="/inscription" class="lien">Inscrivez-vous</a>  </p>
             </form>
         </div>
