@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +13,11 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
         }
 
         .sidebar {
-            background-color: #f8f9fa;
+            background-color: #fff;
             border-right: 1px solid #e0e0e0;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             height: 100vh;
@@ -24,21 +26,29 @@
             bottom: 0;
             left: 0;
             width: 250px;
+            padding-top: 20px;
         }
 
         .sidebar .logo img {
             width: 150px;
+            margin: 0 auto;
+            display: block;
         }
 
         .sidebar .nav-link {
             color: #333;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
         }
 
-        .sidebar .nav-link.active {
-            color: #e51d3e;
-            font-weight: bold;
+        .sidebar .nav-link i {
+            font-size: 1.5rem;
+            margin-right: 10px;
         }
 
+        .sidebar .nav-link.active,
         .sidebar .nav-link:hover {
             color: #e51d3e;
         }
@@ -50,13 +60,15 @@
         }
 
         .content {
-            margin-left: 270px; /* Ajuster pour laisser de la place à la sidebar */
+            margin-left: 270px;
+            padding: 20px;
         }
 
         .info-bar {
             background-color: #e51d3e;
             color: white;
-            padding: 10px 15px;
+            padding: 15px;
+            border-radius: 5px;
             margin-bottom: 20px;
         }
 
@@ -64,22 +76,38 @@
             margin-bottom: 0.5rem;
         }
 
-        .cv-container {
-            margin-top: 20px;
+        .info-bar i {
+            margin-right: 10px;
         }
 
         .cv-container img {
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 0 auto; /* Centrer l'image */
+            margin: 0 auto;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #e51d3e;
+        }
+
+        .biographie,
+        .motivation {
+            margin-top: 20px;
+        }
+
+        .biographie h2,
+        .motivation h2 {
+            margin-bottom: 10px;
         }
     </style>
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <nav class="col-md-2 d-none d-md-block sidebar">
                 <div class="sidebar-sticky">
                     <div class="logo text-center my-4">
                         <img src="logo.png" alt="Simplon Senegal" class="img-fluid">
@@ -124,29 +152,30 @@
                 </div>
             </nav>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 content">
                 <div class="info-bar">
                     <p><strong>{{ $candidature->nom }} {{ $candidature->prenom }}</strong></p>
-                    <p>{{ $candidature->telephone }}</p>
-                    <p>{{ $candidature->email }}</p>
-                    <p>{{ $candidature->adresse }}</p>
+                    <p><i class="fas fa-phone"></i> {{ $candidature->telephone }}</p>
+                    <p><i class="fas fa-envelope"></i>{{ $candidature->email }}</p>
+                    <p><i class="fas fa-map-marker-alt"></i>{{ $candidature->adresse }}</p>
                 </div>
-                <div class="container mt-5">
-                    <div class="row">
-                        <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="biographie">
                             <h2>Biographie</h2>
                             <p>{{ $candidature->biographie }}</p>
+                        </div>
+                        <div class="motivation">
                             <h2>Motivation</h2>
                             <p>{{ $candidature->motivation }}</p>
                         </div>
-                        <div class="col-md-4">
-                            <div class="cv-container">
-                                <h5>CV de {{ $candidature->nom }} {{ $candidature->prenom }}</h5>
-                                <a href="{{ asset('storage/' . $candidature->cv) }}" target="_blank">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="cv-container">
+                            <h5>CV de {{ $candidature->nom }} {{ $candidature->prenom }}</h5>
+                             <a href="{{ asset('storage/' . $candidature->cv) }}" target="_blank">
                                     <img src="{{ asset('storage/' . $candidature->cv) }}" alt="CV de {{ $candidature->nom }} {{ $candidature->prenom }}">
-
                                 </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -157,4 +186,5 @@
     <!-- Inclusion de Bootstrap JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Page d'acceuil</title>
     <style>
-        /* Styles pour la page d'accueil */
+        
     * {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -16,7 +16,8 @@
         header{
         display:flex;
         justify-content:space-around;
-        margin-top:10px
+        margin-top:10px;
+        margin-bottom:1vh
     }
     nav{
         display: flex;
@@ -65,7 +66,7 @@ gap: 60px;
             width: 100%;
             height: 400px;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-evenly;
             align-items: center;
         }
 
@@ -82,7 +83,7 @@ gap: 60px;
             align-items: center;
             display: inline-block;
             padding-top: 10rem;
-            color: white; /* Ensure text is white */
+            color: white; 
         }
 
         .section-baniere::before {
@@ -92,28 +93,37 @@ gap: 60px;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
-            z-index: 1; /* Place overlay above background but below text */
+            background: rgba(0, 0, 0, 0.5); 
+            z-index: 1; 
         }
 
         .section-baniere h1,
         .section-baniere p {
             position: relative;
-            z-index: 2; /* Place text above overlay */
+            z-index: 2; 
         }
-
+         .section-baniere h1{
+         margin-bottom:5vh
+          }
+        .box-texte p{
+          line-height:2
+        }
         .section-quisommesnous {
             background-color: #fff;
-            padding: 50px 20px;
+            margin-top:9vh;
             text-align: center;
+            margin-bottom:6vh
         }
 
         .section-nos-formations {
-            background-color: #f0f0f0;
+            /* background-color: #f0f0f0; */
             padding: 50px 20px;
             text-align: center;
         }
-
+        .section-nos-formations h1{
+            margin-bottom:6vh;
+            margin-bottom:9vh
+        }
         .all-card-contain {
             display: flex;
             justify-content: space-around;
@@ -126,7 +136,7 @@ gap: 60px;
             background-color: #fff;
             padding: 20px;
             width: 30%;
-            height: 450px; /* Adjusted height for new content */
+            height: 450px; 
             margin-bottom: 2rem;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -217,7 +227,7 @@ gap: 60px;
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background-color: #ccc; /* Ajoutez votre image ici */
+            background-color: #ccc; /*  image ici */
             margin: 0 auto;
         }
 
@@ -229,12 +239,16 @@ gap: 60px;
         }
 
         .section-nos-partenaires {
-            background-color: #f0f0f0;
+            /* background-color: #f0f0f0; */
             width: 100%;
-            height: 300px;
+            height: 200px;
             display: flex;
             justify-content: center;
             text-align: center;
+            margin-top:9vh
+        }
+        .partenaire{
+            margin-top:9vh
         }
 
         .box-image-circle {
@@ -251,7 +265,7 @@ gap: 60px;
         .box-image {
             width: 100px;
             height: 100px;
-            background-color: #ccc; /* Ajoutez votre image de partenaire ici */
+            background-color: #ccc; /*  image de partenaire ici */
             margin: 20px;
         }
 
@@ -298,35 +312,51 @@ gap: 60px;
 .btn-candidat img{
     padding-top:5px
 }
-.lien{
-    font-size:1.3rem;
-    font-weight:bold;
-    color:#CE0033
-}
-.imgfoot{
-    width:auto;
-    height:75px
-}
-.paragraphe{
-    width: 240px;
-}
-.newsletter button{
-    background-color:white;
-    font-size:15px;
-    border:solid;
-    box-shadow:10px;
-   border:none;
-   box-shadow:10px 5px 10px 2px gray;
-   border-color:white;
-    padding-top:25px;
-    padding-bottom:20px;
-    border-bottom:solid #CE0033 ;
-    border-bottom-width:5px
-}
+.lien {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #CE0033;
+    }
+    footer p{
+        margin-bottom:2vh
+    }
+    .imgfoot {
+        width: auto;
+        height: 75px;
+    }
+    .paragraphe {
+        width: 240px;
+    }
+    .newsletter-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .btn-newsletter {
+        background-color: #CE0033;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .btn-newsletter:hover {
+        background-color: #a80026;
+    }
+    footer {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 45px;
+    }
 .explorer-container {
     display: flex;
     justify-content: center;
-    margin: 50px 0; /* Ajuster la marge pour un espacement approprié */
+    margin: 50px 0; 
 }
 
 .explorer-button {
@@ -344,9 +374,10 @@ gap: 60px;
 
 .icon-fleche {
     margin-right: 10px;
-    width: 20px; /* Ajuster la taille de l'icône selon vos besoins */
+    width: 20px; 
     height: auto;
 }
+
 
 
     </style>
@@ -357,7 +388,6 @@ gap: 60px;
            <nav>
                <li>Acceuil</li>
                <li>Nos formations</li>
-               <li>Professionnels </li>
                <li>Contact</li>
            </nav>
            <div  class="btn-avatar" >
@@ -372,7 +402,7 @@ gap: 60px;
     <div class="section-baniere" style="background-image: url('https://www.cegid.com/fr/wp-content/uploads/sites/7/2023/01/Header_863497498_900x400_0120-ApprocheCollaborativePME.jpg'); background-color: rgba(240, 240, 240, 0.5);">
         <h1 style="font-size: 45px">Bienvenue sur votre  <br>
             plateforme simplon Sénégal</h1>
-        <p style="font-size:22px">Simplon Sénégal vous propose diverses formations de qualité et riches en <br>
+        <p style="font-size:20px">Simplon Sénégal vous propose diverses formations de qualité et riches en <br>
             pratique et en soft skills, découvrez votre formation.</p>
     </div>
     
@@ -381,7 +411,7 @@ gap: 60px;
         <div class="container">
             <div class="box-image-circle"></div>
             <div class="box-texte">
-                <p style="font-size: 22px;text-align:left">Lorem ipsum" is a placeholder text commonly used in graphic <br>
+                <p style="font-size: 16px;text-align:left">Lorem ipsum" is a placeholder text commonly used in graphic <br>
                     design and publishing. It's a snippet of nonsensical Latin <br>
                     that lets designers focus on layout and visual elements without <br>
                     worrying about actual content.
@@ -392,13 +422,7 @@ gap: 60px;
             </div>
         </div>
     </div>
-    <div class="explorer-container">
-        <a href="{{route('nos_formations')}}"><button class="explorer-button">
-            <img src="{{ asset('images/fleche.png') }}" alt="Flèche" class="icon-fleche"> Explorer
-        </button></a>
-    </div>
-    
-    <div class="section-nos-formations">
+    <!-- <div class="section-nos-formations">
         <h1>Nos Formations</h1>
         <div class="all-card-contain">
             <div class="box-card">
@@ -434,9 +458,43 @@ gap: 60px;
                 <a href="{{route('connexion')}}"><button>Postuler</button></a>
                 <div class="horizontal-bar"></div>
             </div>
+        </div> 
+        <a href="{{route('nos_formations')}}"><button class="explorer-button">
+            <img src="{{ asset('images/fleche.png') }}" alt="Flèche" class="icon-fleche"> Explorer
+        </button></a> 
+    </div> -->
+    <div class="section-nos-formations">
+        <h1>Nos Formations</h1>
+        <div class="all-card-contain">
+            <div class="box-card">
+            <img src="{{ asset('images/africanwoman.jpg') }}" alt="">
+                <!-- <div class="card-label">Développement web</div> -->
+                <a href="{{route('details_formation')}}"><button class="btn-formation   ">Découvrez la formation</button></a>
+                <div class="horizontal-bar"></div>
+                <div class="card-label">Développement web</div>
+                <a href="{{route('connexion')}}"><button class="btn-formation   ">Postuler</button></a>
+                <div class="horizontal-bar"></div>
+            </div>
+            <div class="box-card">
+            <img src="{{ asset('images/africanwoman.jpg') }}" alt="">
+                <div class="card-label">Référent Digitale</div>
+                <a href="{{route('details_formation')}}"><button class="btn-formation   ">Découvrez la formation</button></a>
+                <div class="horizontal-bar"></div>
+                <div class="card-label">Référent digital</div>
+                <a href="{{route('connexion')}}"><button class="btn-formation   ">Postuler</button></a>
+                <div class="horizontal-bar"></div>
+            </div>
+            <div class="box-card">
+                <img src="{{ asset('images/africanwoman.jpg') }}" alt="">
+                <!-- <div class="card-label">Référent Digitale</div> -->
+                <a href="{{route('details_formation')}}"><button class="btn-formation   ">Découvrez la formation</button></a>
+                <div class="horizontal-bar"></div>
+                <div class="card-label">SAS Hackeuses</div>
+                <a href="{{route('connexion')}}"><button class="btn-formation   ">Postuler</button></a>
+                <div class="horizontal-bar"></div>
+            </div>
         </div>  
     </div>
-
     <h1 style="text-align:center">Nos Témoignages</h1>
     <div class="section-temoignage">
         <div class="box-temoignage">
@@ -455,26 +513,28 @@ gap: 60px;
         </div>
     </div>
 
-    <h1 style="text-align: center">Nos Partenaires</h1>
+    <h1 style="text-align: center" class="partenaire">Nos Partenaires</h1>
     <div class="section-nos-partenaires">
-        <div class="box-image" style="background-image: url('https://www.simplon.com/path/to/logo-simplon-senegal.jpg');"></div>
+        <div class="box-image"></div>
+        <div class="box-image"></div>
+        <div class="box-image"></div>
+        <div class="box-image"></div>
         <div class="box-image"></div>
         <div class="box-image"></div>
         <div class="box-image"></div>
         <div class="box-image"></div>
     </div>
 
-
     <footer>
-        <div >
+        <div>
             <img src="{{ asset('images/logosimplon.png') }}" alt="" class="imgfoot">
             <p>Suivez-nous</p>
             <p>@SimplonSenegal</p>
             <div class="container_icon">
-                <div class="icon"><box-icon name='twitter' type='logo' color='white' ></box-icon></div>
-                <div class="icon"><box-icon name='instagram-alt' type='logo'  color='white' ></box-icon></div>
-                <div class="icon"><box-icon name='youtube' type='logo'  color='white' ></box-icon></div>
-                <div class="icon"><box-icon name='linkedin-square' type='logo'  color='white' ></box-icon></div>
+                <div class="icon"><box-icon name='twitter' type='logo' color='white'></box-icon></div>
+                <div class="icon"><box-icon name='instagram-alt' type='logo' color='white'></box-icon></div>
+                <div class="icon"><box-icon name='youtube' type='logo' color='white'></box-icon></div>
+                <div class="icon"><box-icon name='linkedin-square' type='logo' color='white'></box-icon></div>
             </div>
         </div>
         <div>
@@ -485,8 +545,8 @@ gap: 60px;
             <p>Contact</p>
         </div>
         <div>
-            <p class="lien">Nos cordonnées</p>
-            <p>Adresse:Cité Keur Gorgui villa AD65 </p>
+            <p class="lien">Nos coordonnées</p>
+            <p>Adresse: Cité Keur Gorgui villa AD65</p>
             <p>Téléphone fixe : +221 33 824 05 15</p>
             <p>Mobile : +221 77 499 71 69</p>
             <p>Email : simplon.senegal@simplon.co</p>
@@ -494,7 +554,8 @@ gap: 60px;
         <div class="newsletter">
             <p class="lien">Newsletter</p>
             <p class="paragraphe">Souscrivez à notre newsletter en renseignant votre adresse mail.</p>
-            <button>Veuillez entrer votre adresse email</button>
+            <input type="email" placeholder="Veuillez entrer votre adresse email" class="newsletter-input">
+            <button class="btn-newsletter">S'abonner</button>
         </div>
     </footer>
 </body>
