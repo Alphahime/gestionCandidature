@@ -93,7 +93,9 @@
                             <input type="date" class="form-control" name="dateDebut" id="dateDebut">
                         </div>
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        
                 </form>
+                <a href="{{route('candidatures.index')}}" style="text-decoration: none"><button class="btn btn-primary">Retour</button></a>    
             </div>
 </body>
 </html>

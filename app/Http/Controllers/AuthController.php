@@ -40,6 +40,7 @@ class AuthController extends Controller
         $candidat->email = $request->email;
         $candidat->mot_de_passe = Hash::make($request->mot_de_passe);
         $candidat->save();
+
         return back()->with('success', 'Inscription réussie');
     }
 

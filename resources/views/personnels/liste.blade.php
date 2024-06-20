@@ -206,7 +206,7 @@
                                 Formations
                             </a>
                             <a class="nav-link" href="/ajout_form">
-                                <i class="fas fa-add"></i>
+                                <i class="fas fa-plus"></i>
                                 ajouter
                             </a>
                         </li>

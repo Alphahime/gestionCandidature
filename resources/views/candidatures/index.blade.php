@@ -146,35 +146,35 @@
                             </thead>
                             <tbody>
                                 @foreach ($candidatures as $candidature)
-                                <tr>
-                                    <td>{{ $candidature->nom }} {{ $candidature->prenom }}</td>
-                                    <td>{{ $candidature->email }}</td>
-                                    <td>{{ $candidature->age }}</td>
-                                    <td>{{ $candidature->telephone }}</td>
-                                    <td>{{ $candidature->adresse }}</td>
-                                    <td>{{ $candidature->created_at->format('d/m/Y H:i') }}</td>
-                                    <td>
-                                        <a href="{{ route('candidatures.detail', ['id' => $candidature->id]) }}" class="btn btn-info btn-sm">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                        <form action="{{ route('candidatures.action', ['id' => $candidature->id]) }}" method="POST" style="display: inline;">
-                                            @csrf
-                                            <input type="hidden" name="action" value="valider">
-                                            <button type="submit" class="btn btn-success btn-sm">
-                                                <i class="fas fa-check"></i>
-                                            </button>
-                                        </form>
-                                        <form action="{{ route('candidatures.action', ['id' => $candidature->id]) }}" method="POST" style="display: inline;">
-                                            @csrf
-                                            <input type="hidden" name="action" value="rejeter">
-                                            <button type="submit" class="btn btn-danger btn-sm">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            
+                                    <tr>
+                                        <td>{{ $candidature->nom }} {{ $candidature->prenom }}</td>
+                                        <td>{{ $candidature->email }}</td>
+                                        <td>{{ $candidature->age }}</td>
+                                        <td>{{ $candidature->telephone }}</td>
+                                        <td>{{ $candidature->adresse }}</td>
+                
+                                       
+                                        <td>{{ $candidature->created_at->format('d/m/Y H:i') }}</td>
+                                        <td>
+                                            <a href="{{ route('candidatures.detail', ['id' => $candidature->id]) }}" class="btn btn-info btn-sm">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+
+                                            <form action="{{ route('candidatures.action', ['id' => $candidature->id]) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-success btn-sm">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                            </form>
+                                            <form action="{{ route('candidatures.action', ['id' => $candidature->id]) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
