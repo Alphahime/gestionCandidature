@@ -86,11 +86,18 @@
         </div>
         <div class="container2">
         <div class="card-body">
-                @if(Session::has('error'))
-                    <div class="alert alert-danger" role="alert">
-                        {{ Session::get('error') }}
-                    </div>
-                @endif
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        
                 <form action="{{ route('inscription') }}" method="POST">
                 @csrf
             <h1>Créer un compte</h1>
@@ -111,7 +118,7 @@
             <div> <input type="file" name="cv" class="form-control" id="cv" placeholder="Adia Oumy Fall" required></div>
             <div><label for="">Mot de passe</label></div>
             <div><input type="password" name="mot_de_passe" class="form-control" id="mot_de_passe" required></div>
-            <button class="connect">Se Connecter</button>
+            <button class="connect">S'inscrire</button>
             <p>Deja un compte ? <a href="{{route('connexion')}}" class="lien">Connectez-vous</a>  </p>
             </form>
         </div>

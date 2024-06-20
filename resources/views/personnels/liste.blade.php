@@ -230,21 +230,128 @@
             padding: 5vh;
             color: white;
         }
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+            background-color: #f8f9fa;
+            border-right: 1px solid #e0e0e0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 250px;
+        }
+
+        .sidebar .logo img {
+            width: 150px;
+        }
+
+        .sidebar .nav-link {
+            color: #333;
+        }
+
+        .sidebar .nav-link.active {
+            color: #e51d3e;
+            font-weight: bold;
+        }
+
+        .sidebar .nav-link:hover {
+            color: #e51d3e;
+        }
+
+        .sidebar .logout {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+        }
+
+        .content {
+            margin-left: 270px; /* Ajuster pour laisser de la place à la sidebar */
+        }
+
+        .info-bar {
+            background-color: #e51d3e;
+            color: white;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-bar p {
+            margin-bottom: 0.5rem;
+        }
+
+        .cv-container {
+            margin-top: 20px;
+        }
+
+        .cv-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Centrer l'image */
+        }
+        
     </style>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
             <header>
-                <nav>
-                    <li><a href=""><img src="{{ asset('images/logosimplon.png') }}" alt="" class="imgfoot" width="auto" height="70"></a></li>
-                    <li><a href="" class="lien"><box-icon type='solid' name='home'></box-icon>Tableau de bord</a></li>
-                    <li><a href="/ajout_form" class="btn btn-sm btn-outline-secondary"><box-icon type='solid' name='book-reader'></box-icon>Ajouter</a></li>
-                    <li><a href="/candidatures" class="lien"><box-icon name='list-ul'></box-icon>Liste des candidatures</a></li>
-                    <li><a href="" class="lien"><box-icon type='solid' name='bell-ring'></box-icon>Notifications</a></li>
-                    <li class="apparence"><a href=""><box-icon name='color'></box-icon>Apparence</a></li>
-                    <a href=""><button><i class="fas fa-sign-out-alt"></i>Déconnexion</button></a>
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <div class="logo text-center my-4">
+                            <img src="logo.png" alt="Simplon Senegal" class="img-fluid">
+                        </div>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">
+                                    <i class="fas fa-home"></i>
+                                    Tableau de bord
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/liste">
+                                    <i class="fas fa-file"></i>
+                                    Formations
+                                </a>
+                                <li><a href="/ajout_form" class="btn btn-sm btn-outline-secondary"><box-icon type='solid' name='book-reader'></box-icon>Ajouter</a></li>
+
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/candidatures">
+                                    <i class="fas fa-users"></i>
+                                    Liste des Candidats
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-bell"></i>
+                                    Notifications
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-cogs"></i>
+                                    Apparence
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="logout text-center my-4">
+                            <form action="/personnel/deconnexion" method="POST">
+                                @csrf
+                                @method('DELETE')
+                            <button class="btn btn-danger">
+                                <i class="fas fa-sign-out-alt"></i> Déconnexion
+                            </button>
+                        </form>
+                        </div>
+                    </div>
                 </nav>
+             
             </header>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
                 <div class="content-page">
