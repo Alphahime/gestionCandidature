@@ -92,13 +92,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/liste">
                                 <i class="fas fa-file"></i>
                                 Formations
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/candidatures">
                                 <i class="fas fa-users"></i>
                                 Liste des Candidats
                             </a>
@@ -117,9 +117,13 @@
                         </li>
                     </ul>
                     <div class="logout text-center my-4">
+                        <form action="/personnel/deconnexion" method="POST">
+                            @csrf
+                            @method('DELETE')
                         <button class="btn btn-danger">
                             <i class="fas fa-sign-out-alt"></i> Déconnexion
                         </button>
+                    </form>
                     </div>
                 </div>
             </nav>

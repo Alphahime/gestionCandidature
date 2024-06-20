@@ -67,7 +67,7 @@ class AuthController extends Controller
         if ($request->has('personnel')) {
             // Authentification du personnel
             if (Auth::guard('personnel')->attempt($credentials)) {
-                return redirect()->route('personnel.dashboard')->with('success', 'Connexion réussie');
+                return redirect()->route('formation.liste')->with('success', 'Connexion réussie');
             }
         } else {
             // Authentification du candidat
@@ -94,12 +94,18 @@ class AuthController extends Controller
 
         if ($personnel && md5($request->mot_de_passe) == $personnel->mot_de_passe) {
             Auth::login($personnel);
-            return true;
+            return redirect()->route('candidatures.index')->with('success', 'Connexion réussie');
         }
 
         return false;
     
     
+    }
+
+    public function deconnexionPersonnel()
+    {
+        Auth::logout();
+        return redirect()->route('personnel.connexion');
     }
 
     

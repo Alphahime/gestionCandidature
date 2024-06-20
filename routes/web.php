@@ -17,7 +17,7 @@ Route::get('/', [LandingController::class, 'landing'])->name('landing');
 // Routes pour les formations
 Route::get('/explore', [FormationController::class, 'allformation'])->name('nos_formations');
 Route::get('/indexdetail', [FormationController::class, 'detail'])->name('details_formation');
-Route::middleware(['auth', 'role:personnel'])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     Route::get('/liste', [FormationController::class, 'affiche_formation'])->name('formation.liste');
     Route::get('/ajout_form', [PersonnelController::class, 'ajouter'])->name('formation.ajouter');
@@ -34,10 +34,11 @@ Route::get('/connexion', [AuthController::class, 'connexion'])->name('connexion'
 Route::post('/connexion', [AuthController::class, 'connexionPost'])->name('connexion');
 
 // Routes pour le personnel
-Route::middleware(['auth:personnel'])->group(function () {
+
     Route::get('/personnel/connexion', [AuthController::class, 'connexionPersonnel'])->name('personnel.connexion');
     Route::post('/personnel/connexion', [AuthController::class, 'connexionPostPersonnel'])->name('personnel.connexion.post');
-});
+    Route::delete('/personnel/deconnexion', [AuthController::class, 'deconnexionPersonnel'])->name('deconnexion');
+
 
 // Routes pour les candidatures
 Route::middleware(['auth'])->group(function () {
@@ -49,3 +50,4 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/candidatures/{id}/valider', [CandidatureController::class, 'valider'])->name('candidatures.valider');
     Route::post('/candidatures/{id}/rejeter', [CandidatureController::class, 'rejeter'])->name('candidatures.rejeter');
 });
+ 
