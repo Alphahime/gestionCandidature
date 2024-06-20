@@ -42,12 +42,12 @@ Route::post('/connexion', [AuthController::class, 'connexionPost'])->name('conne
 
 // Routes pour les candidatures
 Route::middleware(['auth'])->group(function () {
-    Route::get('/postuler', [CandidatureController::class, 'creer'])->name('candidatures.creer');
-    Route::post('/postuler', [CandidatureController::class, 'store'])->name('candidatures.store');
-    Route::get('/candidatures', [CandidatureController::class, 'index'])->name('candidatures.index');
-    Route::post('/candidatures/{id}/action', [CandidatureController::class, 'action'])->name('candidatures.action');
-    Route::get('/candidatures/{id}', [CandidatureController::class, 'detail'])->name('candidatures.detail');
-    Route::post('/candidatures/{id}/valider', [CandidatureController::class, 'valider'])->name('candidatures.valider');
-    Route::post('/candidatures/{id}/rejeter', [CandidatureController::class, 'rejeter'])->name('candidatures.rejeter');
+   Route::get('/postuler', [CandidatureController::class, 'creer'])->name('candidatures.creer');
+   Route::post('/postuler', [CandidatureController::class, 'store'])->name('candidatures.store');
+   Route::get('/candidatures', [CandidatureController::class, 'index'])->name('candidatures.index');
+   Route::get('/candidatures/{id}', [CandidatureController::class, 'detail'])->name('candidatures.detail');
+   Route::post('/candidatures/{id}/action', [CandidatureController::class, 'candidatureAction'])->name('candidatures.action');
 });
+    
+  
  

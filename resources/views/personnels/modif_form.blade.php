@@ -93,7 +93,7 @@
                             <label for="dateDebut">Démarrage</label>
                             <input type="date" class="form-control" name="dateDebut" id="dateDebut" value="{{$formation->dateDebut}}"  >
                         </div>
-                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <button type="submit" class="btn" style="background-color: #CE0033">Enregistrer</button>
                 </form>
             </div>
 </body>

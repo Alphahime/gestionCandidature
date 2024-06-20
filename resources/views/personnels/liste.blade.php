@@ -9,99 +9,72 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
-            display: flex;
+            display: block;
             margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
         }
 
-        nav {
-            width: 250px;
-            padding: 20px;
-            background-color: #fff;
+        .sidebar {
+            background-color: #f8f9fa;
+            border-right: 1px solid #e0e0e0;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             height: 100vh;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 250px;
         }
 
-        li {
-            list-style: none;
-            margin-bottom: 6vh;
+        .sidebar .logo img {
+            width: 150px;
         }
 
-        a {
-            text-decoration: none;
-            font-size: 1.3rem;
-            color: black;
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            transition: all 0.3s ease;
+        .sidebar .nav-link {
+            color: #333;
         }
 
-        a box-icon {
-            margin-right: 10px;
-        }
-
-        .lien:hover {
-            color: white;
-            background-color: #CE0033;
-        }
-
-        box-icon:hover {
-            color: white;
-        }
-
-        header {
-            margin-bottom: 14vh;
-        }
-
-        .apparence {
-            margin-bottom: 14vh;
-        }
-
-        .apparence:hover {
-            color: white;
-            background-color: #CE0033;
-        }
-
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            border: none;
-            background-color: #CE0033;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .card img {
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-body p {
-            margin: 0;
-        }
-
-        .btn-outline-secondary {
+        .sidebar .nav-link.active {
             color: #e51d3e;
-            border-color: #e51d3e;
+            font-weight: bold;
         }
 
-        .btn-outline-secondary:hover {
+        .sidebar .nav-link:hover {
+            color: #e51d3e;
+        }
+
+        .sidebar .logout {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+        }
+
+        .content {
+            margin-left: 270px; /* Adjust to leave space for the sidebar */
+            padding: 20px;
+        }
+
+        .info-bar {
             background-color: #e51d3e;
             color: white;
+            padding: 10px 15px;
+            margin-bottom: 20px;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500&display=swap');
+        .info-bar p {
+            margin-bottom: 0.5rem;
+        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+        .cv-container {
+            margin-top: 20px;
+        }
+
+        .cv-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Center the image */
         }
 
         h1 {
@@ -150,15 +123,6 @@
         .erreur_message {
             color: red;
             font-size: 12px;
-        }
-
-        body {
-            display: block;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            position: relative;
-            background-color: #f0f0f0;
         }
 
         .form {
@@ -219,141 +183,64 @@
             display: flex;
             justify-content: space-between;
         }
-
-        .content-page {
-            flex: 1;
-            padding: 20px;
-        }
-
-        .background {
-            background-color: #CE0033;
-            padding: 5vh;
-            color: white;
-        }
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .sidebar {
-            background-color: #f8f9fa;
-            border-right: 1px solid #e0e0e0;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            width: 250px;
-        }
-
-        .sidebar .logo img {
-            width: 150px;
-        }
-
-        .sidebar .nav-link {
-            color: #333;
-        }
-
-        .sidebar .nav-link.active {
-            color: #e51d3e;
-            font-weight: bold;
-        }
-
-        .sidebar .nav-link:hover {
-            color: #e51d3e;
-        }
-
-        .sidebar .logout {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-        }
-
-        .content {
-            margin-left: 270px; /* Ajuster pour laisser de la place à la sidebar */
-        }
-
-        .info-bar {
-            background-color: #e51d3e;
-            color: white;
-            padding: 10px 15px;
-            margin-bottom: 20px;
-        }
-
-        .info-bar p {
-            margin-bottom: 0.5rem;
-        }
-
-        .cv-container {
-            margin-top: 20px;
-        }
-
-        .cv-container img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto; /* Centrer l'image */
-        }
-        
     </style>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
-            <header>
-                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                    <div class="sidebar-sticky">
-                        <div class="logo text-center my-4">
-                            <img src="logo.png" alt="Simplon Senegal" class="img-fluid">
-                        </div>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">
-                                    <i class="fas fa-home"></i>
-                                    Tableau de bord
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/liste">
-                                    <i class="fas fa-file"></i>
-                                    Formations
-                                </a>
-                                <li><a href="/ajout_form" class="btn btn-sm btn-outline-secondary"><box-icon type='solid' name='book-reader'></box-icon>Ajouter</a></li>
-
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/candidatures">
-                                    <i class="fas fa-users"></i>
-                                    Liste des Candidats
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-bell"></i>
-                                    Notifications
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-cogs"></i>
-                                    Apparence
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="logout text-center my-4">
-                            <form action="/personnel/deconnexion" method="POST">
-                                @csrf
-                                @method('DELETE')
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <div class="logo text-center my-4">
+                        <img src="logo.png" alt="Simplon Senegal" class="img-fluid">
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <i class="fas fa-home"></i>
+                                Tableau de bord
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/liste">
+                                <i class="fas fa-file"></i>
+                                Formations
+                            </a>
+                            <a class="nav-link" href="/ajout_form">
+                                <i class="fas fa-add"></i>
+                                ajouter
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/candidatures">
+                                <i class="fas fa-users"></i>
+                                Liste des Candidats
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-bell"></i>
+                                Notifications
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-cogs"></i>
+                                Apparence
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="logout text-center my-4">
+                        <form action="/personnel/deconnexion" method="POST">
+                            @csrf
+                            @method('DELETE')
                             <button class="btn btn-danger">
                                 <i class="fas fa-sign-out-alt"></i> Déconnexion
                             </button>
                         </form>
-                        </div>
                     </div>
-                </nav>
-             
-            </header>
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 content">
                 <div class="content-page">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -389,4 +276,6 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
