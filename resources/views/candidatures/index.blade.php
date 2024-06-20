@@ -71,7 +71,6 @@
             background-color: #e51d3e;
             color: white;
         }
-       
     </style>
 </head>
 <body>
@@ -152,14 +151,11 @@
                                         <td>{{ $candidature->age }}</td>
                                         <td>{{ $candidature->telephone }}</td>
                                         <td>{{ $candidature->adresse }}</td>
-                
-                                       
                                         <td>{{ $candidature->created_at->format('d/m/Y H:i') }}</td>
                                         <td>
                                             <a href="{{ route('candidatures.detail', ['id' => $candidature->id]) }}" class="btn btn-info btn-sm">
                                                 <i class="fas fa-eye"></i>
                                             </a>
-
                                             <form action="{{ route('candidatures.valider', ['id' => $candidature->id]) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-success btn-sm">
@@ -184,6 +180,8 @@
     </div>
 
     <!-- Inclusion de Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

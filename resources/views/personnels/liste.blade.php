@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,19 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
         body {
             display: flex;
-            margin: 0;
+            min-height: 100vh;
+            background-color: #f0f0f0;
         }
 
         nav {
@@ -19,16 +30,17 @@
             background-color: #fff;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             height: 100vh;
+            position: fixed;
         }
 
-        li {
+        nav li {
             list-style: none;
-            margin-bottom: 6vh;
+            margin-bottom: 20px;
         }
 
-        a {
+        nav a {
             text-decoration: none;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: black;
             display: flex;
             align-items: center;
@@ -36,34 +48,18 @@
             transition: all 0.3s ease;
         }
 
-        a box-icon {
+        nav a box-icon {
             margin-right: 10px;
+            font-size: 1.5rem;
         }
 
-        .lien:hover {
+        nav a:hover {
             color: white;
             background-color: #CE0033;
         }
 
-        box-icon:hover {
-            color: white;
-        }
-
-        header {
-            margin-bottom: 14vh;
-        }
-
-        .apparence {
-            margin-bottom: 14vh;
-        }
-
-        .apparence:hover {
-            color: white;
-            background-color: #CE0033;
-        }
-
-        button {
-            margin-top: 10px;
+        nav button {
+            margin-top: 20px;
             padding: 10px 20px;
             font-size: 1rem;
             cursor: pointer;
@@ -95,15 +91,6 @@
             color: white;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
         h1 {
             text-align: center;
             margin-bottom: 20px;
@@ -119,46 +106,12 @@
             display: flex;
             align-items: center;
             border-radius: 6px;
-            text-decoration: 0;
+            text-decoration: none;
         }
 
         .Btn_add img {
             margin-right: 5px;
             height: 20px;
-        }
-
-        .form form {
-            display: flex;
-            width: 100%;
-            flex-direction: column;
-            margin: auto;
-        }
-
-        .back_btn {
-            color: rgba(48, 17, 188, 1);
-            text-decoration: 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .back_btn img {
-            height: 16px;
-            margin-right: 5px;
-            color: rgba(48, 17, 188, 1);
-        }
-
-        .erreur_message {
-            color: red;
-            font-size: 12px;
-        }
-
-        body {
-            display: block;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            position: relative;
-            background-color: #f0f0f0;
         }
 
         .form {
@@ -221,8 +174,10 @@
         }
 
         .content-page {
+            margin-left: 270px;
             flex: 1;
             padding: 20px;
+            width: calc(100% - 270px);
         }
 
         .background {
@@ -297,68 +252,29 @@
         
     </style>
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row">
             <header>
-                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                    <div class="sidebar-sticky">
-                        <div class="logo text-center my-4">
-                            <img src="logo.png" alt="Simplon Senegal" class="img-fluid">
-                        </div>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">
-                                    <i class="fas fa-home"></i>
-                                    Tableau de bord
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/liste">
-                                    <i class="fas fa-file"></i>
-                                    Formations
-                                </a>
-                                <li><a href="/ajout_form" class="btn btn-sm btn-outline-secondary"><box-icon type='solid' name='book-reader'></box-icon>Ajouter</a></li>
 
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/candidatures">
-                                    <i class="fas fa-users"></i>
-                                    Liste des Candidats
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-bell"></i>
-                                    Notifications
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-cogs"></i>
-                                    Apparence
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="logout text-center my-4">
-                            <form action="/personnel/deconnexion" method="POST">
-                                @csrf
-                                @method('DELETE')
-                            <button class="btn btn-danger">
-                                <i class="fas fa-sign-out-alt"></i> Déconnexion
-                            </button>
-                        </form>
-                        </div>
-                    </div>
+                <nav>
+                    <li><a href="#"><img src="{{ asset('images/logosimplon.png') }}" alt="Logo Simplon" class="imgfoot" width="auto" height="70"></a></li>
+                    <li><a href="#" class="lien"><box-icon type='solid' name='home'></box-icon>Tableau de bord</a></li>
+                    <li><a href="/ajout_form" class="lien"><box-icon type='solid' name='book-reader'></box-icon>Ajouter</a></li>
+                    <li><a href="/candidatures" class="lien"><box-icon name='list-ul'></box-icon>Liste des candidatures</a></li>
+                    <li><a href="#" class="lien"><box-icon type='solid' name='bell-ring'></box-icon>Notifications</a></li>
+                    <li class="apparence"><a href="#" class="lien"><box-icon name='color'></box-icon>Apparence</a></li>
+                    <li><a href="#"><button><i class="fas fa-sign-out-alt"></i>Déconnexion</button></a></li>
                 </nav>
              
             </header>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
                 <div class="content-page">
                     @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
                     @endif
                     <div class="row">
                         @foreach($formations as $formation)
@@ -389,4 +305,7 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
