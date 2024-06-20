@@ -10,9 +10,8 @@
     <header>
         <li><img src="{{ asset('images/logo.png') }}" alt="" class="logo"></li>
         <nav>
-            <li>Acceuil</li>
-            <li>Nos formations</li>
-            <li>Professionnels</li>
+            <a href="{{route('landing')}}" style="text-decoration: none"><li>Accueil</li></a>
+            <a href="{{route('nos_formations')}}" style="text-decoration: none"><li>Nos formations</li></a>
             <li>Contact</li>
         </nav>
         <div class="btn-avatar">
