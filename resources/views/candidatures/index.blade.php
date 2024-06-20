@@ -65,13 +65,13 @@
 
         .btn-outline-secondary:hover {
             background-color: #e51d3e;
-            color: white;
         }
 
         .table thead th {
             background-color: #e51d3e;
             color: white;
         }
+       
     </style>
 </head>
 <body>
@@ -136,8 +136,6 @@
                                     <th>Âge</th>
                                     <th>Téléphone</th>
                                     <th>Adresse</th>
-    
-                                    <th>CV</th>
                                     <th>Date de soumission</th>
                                     <th>Actions</th>
                                 </tr>
@@ -151,7 +149,7 @@
                                         <td>{{ $candidature->telephone }}</td>
                                         <td>{{ $candidature->adresse }}</td>
                 
-                                        <td><a href="{{ asset('storage/' . $candidature->cv) }}" target="_blank">Voir CV</a></td>
+                                       
                                         <td>{{ $candidature->created_at->format('d/m/Y H:i') }}</td>
                                         <td>
                                             <a href="{{ route('candidatures.detail', ['id' => $candidature->id]) }}" class="btn btn-info btn-sm">
