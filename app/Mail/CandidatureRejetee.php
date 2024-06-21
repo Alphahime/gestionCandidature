@@ -22,7 +22,7 @@ class CandidatureRejetee extends Mailable
 
     public function build()
     {
-        return $this->subject('Votre candidature a été rejetée')
+        return $this->from('adiaratououmyfall@gmail.com')->subject('Votre candidature a été rejetée')
                     ->view('candidatures.rejeter');
     }
 }

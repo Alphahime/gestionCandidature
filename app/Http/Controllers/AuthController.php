@@ -51,6 +51,11 @@ class AuthController extends Controller
         // Trouvez la formation par son ID
         $formation = Formation::find($formationId);
 
+                // Vérification de la date limite
+                if (strtotime($formation->dateLimite) < strtotime('now')) {
+                    return back()->with('error', 'La date limite pour candidater à cette formation est dépassée.');
+                }
+
         // Retournez la vue avec la formation
         return view('candidats.connexion', compact('formation'));
     }
