@@ -23,18 +23,32 @@ class CandidatureController extends Controller
         return view('candidatures.creer', compact('formation'));
     }
 
-
+    
     public function store(Request $request)
-{
-    // Valider les données du formulaire
-    $request->validate([
-        'biographie' => 'required|string|max:5000',
-        'motivation' => 'required|string|max:5000',
-        'cv' => 'required|file|mimes:pdf,doc,docx|max:2048'
-    ]);
-
-    // Traiter et enregistrer les données
-    $candidature = new Candidature([
+    {
+        $userId = auth()->user()->id; // Supposons que l'utilisateur est authentifié
+        $candidat = Candidat::where('id', $userId)->first();
+    
+        // Validation des données de la candidature
+        $validatedData = $request->validate([
+            'formation_id' => 'required|exists:formations,id',
+            'biographie' => 'required|string|max:5000',
+            'motivation' => 'required|string|max:5000',
+            'cv' => 'required|file|mimes:pdf,doc,docx|max:2048'
+            // Ajoutez d'autres règles de validation ici
+        ]);
+    
+        // Vérifiez si le candidat a déjà postulé à la formation spécifiée
+        $existingCandidature = Candidature::where('candidat_id', $candidat->id)
+                                          ->where('formation_id', $validatedData['formation_id'])
+                                          ->first();
+    
+        if ($existingCandidature) {
+            return back()->with('error', 'Vous avez déjà postulé à cette formation.');
+        }
+    
+        // Création de la nouvelle candidature
+        $candidature = new Candidature([
 
             'biographie' => $request->biographie,
             'motivation' => $request->motivation,
@@ -44,19 +58,20 @@ class CandidatureController extends Controller
             'candidat_id' => Auth::id(),// Assigner l'ID du candidat connecté
             'formation_id' => $request->input('formation_id'),
         ]);
-
-    // Gérer le téléchargement du fichier CV
-    if ($request->hasFile('cv')) {
-        $file = $request->file('cv');
-        $path = $file->store('cvs', 'public');
-        $candidature->cv = $path;
-    }
-
+        if ($request->hasFile('cv')) {
+            $file = $request->file('cv');
+            $path = $file->store('cvs', 'public');
+            $candidature->cv = $path;
+        }
+        
     // Enregistrez la candidature dans la base de données
     $candidature->save();
-    return redirect()->back()->with('success', 'Candidature soumise avec succès');
-}
+    
+        return redirect()->route('candidatures.index')->with('success', 'Votre candidature a été soumise avec succès.');
+    }
+    
 
+   
 
 public function index()
 {

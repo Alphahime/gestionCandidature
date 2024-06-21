@@ -55,7 +55,11 @@
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
-        @endif
+        @else       
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 
         <form action="{{ route('candidatures.creer', ['id' => $formation->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
