@@ -3,10 +3,11 @@
 namespace App\Mail;
 
 use App\Models\Candidat;
+use App\Models\Candidature;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class CandidatureRejetee extends Mailable
 {
@@ -14,7 +15,7 @@ class CandidatureRejetee extends Mailable
 
     public $candidature;
 
-    public function __construct(Candidat $candidature)
+    public function __construct(Candidature $candidature)
     {
         $this->candidature = $candidature;
     }

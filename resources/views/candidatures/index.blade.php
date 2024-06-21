@@ -155,14 +155,14 @@
                                             </a>
 
 
-                                            <form action="{{ route('candidatures.action', ['id' => $candidature->id, 'action' => 'approve']) }}" method="POST" style="display: inline;">
+                                            <form action="{{ route('candidatures.action', ['id' => $candidature->id, 'action' => 'validee']) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-success btn-sm">
                                                     <i class="fas fa-check"></i>
                                                 </button>
                                             </form>
 
-                                            <form action="{{ route('candidatures.action', ['id' => $candidature->id, 'action' => 'reject']) }}" method="POST" style="display: inline;">
+                                            <form action="{{ route('candidatures.action', ['id' => $candidature->id, 'action' => 'rejetee']) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm">
                                                     <i class="fas fa-times"></i>

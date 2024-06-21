@@ -46,7 +46,7 @@ Route::post('/connexion', [AuthController::class, 'connexionPost'])->name('conne
     Route::post('/formations/{id}/postuler', [CandidatureController::class, 'store'])->name('candidatures.creer');
    Route::get('/candidatures', [CandidatureController::class, 'index'])->name('candidatures.index');
   Route::get('/candidatures/{id}', [CandidatureController::class, 'detail'])->name('candidatures.detail');
-   Route::post('/candidatures/{id}/action', [CandidatureController::class, 'candidatureAction'])->name('candidatures.action');
+   Route::post('/candidatures/{id}/{action}', [CandidatureController::class, 'candidatureAction'])->name('candidatures.action');
 //});
 
 Route::post('candidatures/updateStatus/{id}/{action}', [CandidatureController::class, 'updateStatus'])->name('candidatures.updateStatus');

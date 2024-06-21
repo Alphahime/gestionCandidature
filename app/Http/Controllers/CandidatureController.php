@@ -65,27 +65,30 @@ public function index()
     return view('candidatures.index', compact('candidatures'));
 }
 
-public function updateStatus($id, $action)
+public function candidatureAction(Request $request, $id, $action)
 {
-    $candidature = Candidature::findOrFail($id);
-    $formation = $candidature->formation->libelle;
-    $created_at = $candidature->created_at->format('d/m/Y');
+    // Charger la candidature avec les relations candidat et formation
+    $candidature = Candidature::with(['candidat', 'formation'])->find($id);
 
-    if ($action == 'approve') {
-        $status = 'acceptée';
-        $candidature->status = 'approved';
-    } elseif ($action == 'reject') {
-        $status = 'rejetée';
-        $candidature->status = 'rejected';
+    if (!$candidature) {
+        return back()->with('error', 'Candidature non trouvée');
     }
 
-    $candidature->save();
+    $candidat = $candidature->candidat;
 
-    // Envoyer la notification avec les informations supplémentaires
-    $candidature->candidat->notify(new CandidatureStatutNotification($status, $formation, $created_at));
+    if ($action == 'validee') {
+        Mail::to($candidat->email)->send(new CandidatureValidee($candidature));
+        // Mettre à jour l'état ou faire d'autres actions nécessaires après validation
+        return back()->with('success', 'Candidature validée et email envoyé');
+    } elseif ($action == 'rejetee') {
+        Mail::to($candidat->email)->send(new CandidatureRejetee($candidature));
+        // Mettre à jour l'état ou faire d'autres actions nécessaires après rejet
+        return back()->with('success', 'Candidature rejetée et email envoyé');
+    }
 
-    return redirect()->route('candidatures.index')->with('success', 'Candidature mise à jour');
+    return back()->with('error', 'Action non reconnue');
 }
+
     public function detail($id)
     {
         // Récupération de la candidature par son ID avec les relations
