@@ -58,7 +58,7 @@
         width: 435px;
       height: 65px;
       border-radius: 20px;
-       background: var(--rouge-simplon, #CE0033); 
+       background: var(--rouge-simplon, #CE0033);
      color: var(--Blanc, #FFF);
      font-size: 24px;
        font-style: normal;
@@ -91,31 +91,31 @@
                 {{ session('success') }}
             </div>
         @endif
-        
+
         @if(session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}
             </div>
         @endif
-        
+
                 <form action="{{ route('inscription') }}" method="POST">
                 @csrf
             <h1>Créer un compte</h1>
             <img src="{{ asset('images/logo.png') }}" alt="" width="auto" height="70">
             <div> <label for="nom" class="form-label">Nom</label></div>
-            <div><input type="text" name="nom" class="form-control" id="nom" placeholder="Fall" required></div>
+            <div><input type="text" name="nom" class="form-control" id="nom" placeholder="Marna" required></div>
             <div><label for="prenom" class="form-label">Prenom</label></div>
-            <div><input type="text" name="prenom" class="form-control" id="prenom" placeholder="Adia Oumy" required></div>
+            <div><input type="text" name="prenom" class="form-control" id="prenom" placeholder="Malang" required></div>
             <div> <label for="age" class="form-label">Age</label></div>
-            <div> <input type="text" name="age" class="form-control" id="age" placeholder="Adia Oumy Fall" required></div>
+            <div> <input type="text" name="age" class="form-control" id="age" placeholder="saisir age" required></div>
             <div> <label for="telephone" class="form-label">Telephone</label></div>
             <div> <input type="text" name="telephone" class="form-control" id="telephone" placeholder="+221 77 777 77 77" required></div>
             <div><label for="">Email</label></div>
-            <div><input type="email" name="email" class="form-control" id="email" placeholder="adiaoumyf@gmail.com" required></div>
+            <div><input type="email" name="email" class="form-control" id="email" placeholder="malang2019marna@gmail.com" required></div>
             <div><label for="adresse" class="form-label">Adresse</label></div>
             <div><input type="text" name="adresse" class="form-control" id="adresse" placeholder="+221 77 777 77 77" required></div>
             <div><label for="cv" class="form-label">Curricum Vitae</label></div>
-            <div> <input type="file" name="cv" class="form-control" id="cv" placeholder="Adia Oumy Fall" required></div>
+            <div> <input type="file" name="cv" class="form-control" id="cv" placeholder="Importez votre CV" required></div>
             <div><label for="">Mot de passe</label></div>
             <div><input type="password" name="mot_de_passe" class="form-control" id="mot_de_passe" required></div>
             <button class="connect">S'inscrire</button>
@@ -182,7 +182,7 @@
                                 <label for="motivation" class="form-label">Motivation</label>
                                 <textarea name="motivation" id="motivation" cols="30" rows="10"></textarea>
                             </div> --}}
-                           
+
                             <div class="mb-3">
                                 <div class="d-grid">
                                     <button class="btn btn-primary">S'inscrire</button>

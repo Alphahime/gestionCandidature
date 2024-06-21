@@ -262,8 +262,11 @@
                                     <p class="card-text"><strong>Publié le :</strong> {{ $formation->datePublication }}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="/modif_form/{{$formation->id}}" class="text-primary"><i class="fas fa-edit"></i></a>
+                                    <a href="/modif_form/{{$formation->id}}" class="text-danger"><i class="fas fa-edit"></i></a>
+                                    <a href="{{route('formations.candidatures',['id' => $formation->id])}}" class="text-primary" ><i class="fas fa-eye"></i></a>
                                     <a href="/supprimer_form/{{$formation->id}}" class="text-danger"><i class="fas fa-trash"></i></a>
+
+
                                 </div>
                             </div>
                         </div>

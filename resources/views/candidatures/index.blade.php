@@ -71,7 +71,7 @@
             background-color: #e51d3e;
             color: white;
         }
-       
+
     </style>
 </head>
 <body>
@@ -135,11 +135,9 @@
                         <table class="table table-striped table-sm">
                             <thead>
                                 <tr>
-                                    <th>Nom</th>
+                                    <th>Nom du candidat </th>
                                     <th>Email</th>
-                                    <th>Âge</th>
-                                    <th>Téléphone</th>
-                                    <th>Adresse</th>
+                                    <th>Nom de la formation</th>
                                     <th>Date de soumission</th>
                                     <th>Actions</th>
                                 </tr>
@@ -147,29 +145,34 @@
                             <tbody>
                                 @foreach ($candidatures as $candidature)
                                     <tr>
-                                        <td>{{ $candidature->nom }} {{ $candidature->prenom }}</td>
-                                        <td>{{ $candidature->email }}</td>
-                                        <td>{{ $candidature->age }}</td>
-                                        <td>{{ $candidature->telephone }}</td>
-                                        <td>{{ $candidature->adresse }}</td>
-                
-                                       
+                                        <td>{{ $candidature->candidat->prenom }} {{ $candidature->candidat->nom }}  </td>
+                                        <td>{{ $candidature->candidat->email }}</td>
+                                        <td>{{ $candidature->formation->libelle }}</td>
                                         <td>{{ $candidature->created_at->format('d/m/Y H:i') }}</td>
                                         <td>
                                             <a href="{{ route('candidatures.detail', ['id' => $candidature->id]) }}" class="btn btn-info btn-sm">
                                                 <i class="fas fa-eye"></i>
                                             </a>
 
-                                            <form action="{{ route('candidatures.action', ['id' => $candidature->id]) }}" method="POST" style="display: inline;">
+
+                                            <form action="{{ route('candidatures.action', ['id' => $candidature->id, 'action' => 'approve']) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-success btn-sm">
                                                     <i class="fas fa-check"></i>
                                                 </button>
                                             </form>
-                                            <form action="{{ route('candidatures.action', ['id' => $candidature->id]) }}" method="POST" style="display: inline;">
+
+                                            <form action="{{ route('candidatures.action', ['id' => $candidature->id, 'action' => 'reject']) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm">
                                                     <i class="fas fa-times"></i>
+                                                </button>
+                                            </form>
+
+                                            <form action="{{ route('candidatures.action', ['id' => $candidature->id, 'action' => 'delete']) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-trash-alt"></i>
                                                 </button>
                                             </form>
                                         </td>

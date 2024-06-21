@@ -62,7 +62,7 @@
         width: 435px;
       height: 65px;
       border-radius: 20px;
-       background: var(--rouge-simplon, #CE0033); 
+       background: var(--rouge-simplon, #CE0033);
      color: var(--Blanc, #FFF);
      font-size: 24px;
        font-style: normal;
@@ -97,6 +97,9 @@
             @csrf
             <h1>Se connecter</h1>
             <img src="{{ asset('images/logo.png') }}" alt="" width="auto" height="70">
+            @if(isset($formation))
+            <input type="hidden" name="formation_id" value="{{ $formation->id }}">
+        @endif
             <div><label for="">Email</label></div>
             <div><input type="email" name="email" class="form-control" id="email" placeholder="adiaoumyf@gmail.com" required></div>
             <div><label for="">Mot de passe</label></div>

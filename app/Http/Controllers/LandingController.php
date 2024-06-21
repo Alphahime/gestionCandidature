@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Formation;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -9,6 +10,7 @@ class LandingController extends Controller
     //
     public function landing()
     {
-        return view('acceuil.landing');
+        $formations = Formation::all();
+        return view('acceuil.landing',compact('formations'));
     }
 }

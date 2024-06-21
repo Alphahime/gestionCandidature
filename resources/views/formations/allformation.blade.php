@@ -15,20 +15,21 @@
             <li>Contact</li>
         </nav>
         <div class="btn-avatar">
-            <div><img src="{{ asset('images/Avatar.png') }}" alt="" class="avatar"></div>  
+            <div><img src="{{ asset('images/Avatar.png') }}" alt="" class="avatar"></div>
             <button>Connexion</button>
         </div>
     </header>
-    <div class="section-nos-formations">
+ <div class="section-nos-formations">
         <h1>Nos Formations</h1>
         <div class="all-card-contain">
+            @foreach($formations as $formation)
             <div class="box-card">
             <img src="{{ asset('images/africanwoman.jpg') }}" alt="">
-                <div class="card-label">Développement web</div>
+                <div class="card-label">{{ $formation->libelle }}</div>
                 <a href="{{route('details_formation')}}"><button class="btn-formation   ">Découvrez la formation</button></a>
                 <div class="horizontal-bar"></div>
             </div>
-            <div class="box-card">
+         {{-- <div class="box-card">
                 <div class="card-label">Référent Digitale</div>
                 <a href="{{route('details_formation')}}"><button class="btn-formation   ">Découvrez la formation</button></a>
                 <div class="horizontal-bar"></div>
@@ -38,8 +39,9 @@
                 <div class="card-label">Référent Digitale</div>
                 <a href="{{route('details_formation')}}"><button class="btn-formation   ">Découvrez la formation</button></a>
                 <div class="horizontal-bar"></div>
-            </div>
-        </div>  
+            </div>  --}}
+            @endforeach
+        </div>
     </div>
     <footer>
         <div>

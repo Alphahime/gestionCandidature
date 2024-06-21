@@ -13,6 +13,10 @@ class Candidature extends Model
         'etat',
         'candidat_id',
         'formation_id',
+        'biographie',
+        'motivation',
+        'cv',
+    
     ];
 
     public function notifications()

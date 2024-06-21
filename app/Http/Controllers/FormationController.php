@@ -3,19 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Models\Formation;
+use App\Models\Candidature;
 use Illuminate\Http\Request;
 
 class FormationController extends Controller
 {
+    public function candidatures($id)
+    {
+        // Récupérer la formation par son ID
+        $formation = Formation::findOrFail($id);
 
+        // Récupérer les candidatures associées à cette formation
+        $candidatures = Candidature::where('formation_id', $id)->get();
+
+        // Afficher la vue 'formations.candidatures' avec les données
+        return view('personnels.candidature_form', compact('formation', 'candidatures'));
+    }
  public function allformation(){
-    return view('formations.allformation');
+    $formations = Formation::all();
+    return view('formations.allformation', compact('formations'));
  }
     public function affiche_formation(){
 
         $formations = Formation::all();
         return view('personnels.liste', compact('formations'));
     }
+
+    public function liste_formation(){
+
+        $formations = Formation::all();
+        return view('acceuil.landing', compact('formations'));
+    }
+
 
 
     public function ajouter_traitement(Request $request){
@@ -45,7 +64,7 @@ class FormationController extends Controller
     }
 
     public function Modifier($id){
-        
+
         $formation = Formation::find($id);
         return view('personnels.modif_form', compact('formation'));
     }
@@ -82,7 +101,7 @@ class FormationController extends Controller
     }
     public function detail(){
         return view('formations.indexdetail');
- 
- }   
+
+ }
 
 }

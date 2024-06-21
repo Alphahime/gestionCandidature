@@ -158,10 +158,10 @@
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 content">
                 <div class="info-bar">
-                    <p><strong>{{ $candidature->nom }} {{ $candidature->prenom }}</strong></p>
-                    <p><i class="fas fa-phone"></i> {{ $candidature->telephone }}</p>
-                    <p><i class="fas fa-envelope"></i>{{ $candidature->email }}</p>
-                    <p><i class="fas fa-map-marker-alt"></i>{{ $candidature->adresse }}</p>
+                    <p><strong>{{ $candidature->candidat->nom }} {{ $candidature->candidat->prenom }} {{ $candidature->candidat->age }} ans </strong></p>
+                    <p><i class="fas fa-phone"></i> {{ $candidature->candidat->telephone }}</p>
+                    <p><i class="fas fa-envelope"></i>{{ $candidature->candidat->email }}</p>
+                    <p><i class="fas fa-map-marker-alt"></i>{{ $candidature->candidat->adresse }}</p>
                 </div>
                 <div class="row">
                     <div class="col-md-8">
@@ -176,10 +176,23 @@
                     </div>
                     <div class="col-md-4">
                         <div class="cv-container">
-                            <h5>CV de {{ $candidature->nom }} {{ $candidature->prenom }}</h5>
+                            <h5>CV de {{ $candidature->candidat->nom }} {{ $candidature->candidat->prenom }}</h5>
                              <a href="{{ asset('storage/' . $candidature->cv) }}" target="_blank">
                                     <img src="{{ asset('storage/' . $candidature->cv) }}" alt="CV de {{ $candidature->nom }} {{ $candidature->prenom }}">
-                                </a>
+                                </a> <hr>
+                                <form action="{{ route('candidatures.detail', ['id' => $candidature->id, 'action' => 'approve']) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success btn-sm">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </form>
+
+                                <form action="{{ route('candidatures.detail', ['id' => $candidature->id, 'action' => 'reject']) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </form>
                         </div>
                     </div>
                 </div>

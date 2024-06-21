@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidat;
+use App\Models\Formation;
 use App\Models\Personnel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,8 +35,6 @@ class AuthController extends Controller
         $candidat->telephone = $request->telephone;
         $candidat->adresse = $request->adresse;
         $candidat->age = $request->age;
-        // $candidat->biographie = $request->biographie;
-        // $candidat->motivation = $request->motivation;
         $candidat->cv = $request->cv;
         $candidat->email = $request->email;
         $candidat->mot_de_passe = Hash::make($request->mot_de_passe);
@@ -44,38 +43,47 @@ class AuthController extends Controller
         return back()->with('success', 'Inscription réussie');
     }
 
-    public function connexion()
+    public function connexion(Request $request)
     {
-        return view('candidats/connexion');
+        // Récupérez l'ID de la formation depuis la requête (si disponible)
+        $formationId = $request->input('formation_id');
+
+        // Trouvez la formation par son ID
+        $formation = Formation::find($formationId);
+
+        // Retournez la vue avec la formation
+        return view('candidats.connexion', compact('formation'));
     }
+
 
     public function connexionPost(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'mot_de_passe' => 'required|string|min:8'
-        ]);
+{
+    $request->validate([
+        'email' => 'required|email',
+        'mot_de_passe' => 'required|string|min:8'
+    ]);
 
-        $credentials = [
-            'email' => $request->email,
-            'password' => $request->mot_de_passe
-        ];
+    $credentials = [
+        'email' => $request->email,
+        'password' => $request->mot_de_passe
+    ];
 
-        // Vérifier le type d'utilisateur (candidat ou personnel)
-        if ($request->has('personnel')) {
-            // Authentification du personnel
-            if (Auth::guard('personnel')->attempt($credentials)) {
-                return redirect()->route('formation.liste')->with('success', 'Connexion réussie');
-            }
-        } else {
-            // Authentification du candidat
-            if (Auth::guard('web')->attempt($credentials)) {
-                return redirect()->intended(route('candidatures.creer'))->with('success', 'Connexion réussie');
-            }
+    if ($request->has('personnel')) {
+        // Authentification du personnel
+        if (Auth::guard('personnel')->attempt($credentials)) {
+            return redirect()->route('formation.liste')->with('success', 'Connexion réussie');
         }
-
-        return back()->with('error', 'Email ou mot de passe incorrect');
+    } else {
+        // Authentification du candidat
+        if (Auth::guard('web')->attempt($credentials)) {
+            $formationId = $request->input('formation_id');
+            return redirect()->route('candidatures.formulaire', ['id' => $formationId])->with('success', 'Connexion réussie');
+        }
     }
+
+    return back()->with('error', 'Email ou mot de passe incorrect');
+}
+
 
     public function deconnexion()
     {
@@ -96,8 +104,8 @@ class AuthController extends Controller
         }
 
         return false;
-    
-    
+
+
     }
 
     public function deconnexionPersonnel()
@@ -106,5 +114,5 @@ class AuthController extends Controller
         return redirect()->route('personnel.connexion');
     }
 
-    
+
 }

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Page d'acceuil</title>
     <style>
-        
+
     * {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -51,7 +51,7 @@ gap: 60px;
         align-items: center;
         gap: 10px;
         border-radius: 100px;
-       background: #CE0033; 
+       background: #CE0033;
     }
     .btn-avatar button{
         border:none;
@@ -74,7 +74,7 @@ gap: 60px;
             position: relative;
             background-color: #f0f0f0;
             width: 100%;
-            height: 500px; 
+            height: 500px;
             background-image: url('https://www.cegid.com/fr/wp-content/uploads/sites/7/2023/01/Header_863497498_900x400_0120-ApprocheCollaborativePME.jpg');
             background-size: cover;
             background-repeat: no-repeat;
@@ -83,7 +83,7 @@ gap: 60px;
             align-items: center;
             display: inline-block;
             padding-top: 10rem;
-            color: white; 
+            color: white;
         }
 
         .section-baniere::before {
@@ -93,14 +93,14 @@ gap: 60px;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); 
-            z-index: 1; 
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
         }
 
         .section-baniere h1,
         .section-baniere p {
             position: relative;
-            z-index: 2; 
+            z-index: 2;
         }
          .section-baniere h1{
          margin-bottom:5vh
@@ -136,7 +136,7 @@ gap: 60px;
             background-color: #fff;
             padding: 20px;
             width: 30%;
-            height: 450px; 
+            height: 450px;
             margin-bottom: 2rem;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -157,7 +157,7 @@ gap: 60px;
             border-top-right-radius: 2rem;
             justify-content: center;
             display: flex;
-            align-items: center; 
+            align-items: center;
         }
 
         .date-info {
@@ -356,7 +356,7 @@ gap: 60px;
 .explorer-container {
     display: flex;
     justify-content: center;
-    margin: 50px 0; 
+    margin: 50px 0;
 }
 
 .explorer-button {
@@ -374,8 +374,52 @@ gap: 60px;
 
 .icon-fleche {
     margin-right: 10px;
-    width: 20px; 
+    width: 20px;
     height: auto;
+}
+
+
+
+.section-nos-formations .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.section-nos-formations .col-md-4 {
+    flex: 0 0 30%; /* Ajustez ce pourcentage en fonction du nombre de cartes que vous voulez afficher par ligne */
+    margin-bottom: 20px;
+}
+
+.section-nos-formations .card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.section-nos-formations .card h5 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.section-nos-formations .card p {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.section-nos-formations .card button {
+    background-color: #CE0033;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.section-nos-formations .card button:hover {
+    background-color: #a80026;
 }
 
 
@@ -392,12 +436,12 @@ gap: 60px;
                <li>Contact</li>
            </nav>
            <div  class="btn-avatar" >
-           <div> <img src="{{ asset('images/Avatar.png') }}" alt="" class="avatar"></div>  
+           <div> <img src="{{ asset('images/Avatar.png') }}" alt="" class="avatar"></div>
            <form action="{{route('connexion')}}">
                <button type="submit">Connexion</button>
              </form>
            </div>
-   
+
        </header>
 
     <div class="section-baniere" style="background-image: url('https://www.cegid.com/fr/wp-content/uploads/sites/7/2023/01/Header_863497498_900x400_0120-ApprocheCollaborativePME.jpg'); background-color: rgba(240, 240, 240, 0.5);">
@@ -406,7 +450,7 @@ gap: 60px;
         <p style="font-size:20px">Simplon Sénégal vous propose diverses formations de qualité et riches en <br>
             pratique et en soft skills, découvrez votre formation.</p>
     </div>
-    
+
     <div class="section-quisommesnous">
         <h1>Qui sommes-nous</h1>
         <div class="container">
@@ -423,79 +467,35 @@ gap: 60px;
             </div>
         </div>
     </div>
-    <!-- <div class="section-nos-formations">
-        <h1>Nos Formations</h1>
-        <div class="all-card-contain">
-            <div class="box-card">
-                <div class="card-label">Developpement web</div>
-                <div class="date-info">
-                    Date limite: <span class="red">20</span>/11 <span class="black">2024</span><br>
-                    Début: Juillet 202<br>
-                    Durée: 09 mois
+
+ <div class="section-nos-formations">
+    <h1>Nos Formations</h1>
+    <div class="row">
+        @foreach($formations as $formation)
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $formation->libelle }}</h5>
+                    <p class="card-text"><strong>Description:</strong> {{ $formation->description }}</p>
+                    <p class="card-text"><strong>Lieu :</strong> {{ $formation->lieu }}</p>
+                    <p class="card-text"><strong>Horaire :</strong> {{ $formation->horaire }}</p>
+                    <p class="card-text"><strong>Durée:</strong> {{ $formation->duree }}</p>
+                    <p class="card-text"><strong>Demarrage :</strong> {{ $formation->dateDebut }}</p>
+                    <p class="card-text"><strong>Delai Candidature :</strong>{{ $formation->dateLimite }}</p>
+                    <p class="card-text"><strong>Publié le :</strong> {{ $formation->datePublication }}</p>
+                    <a href="{{ route('details_formation', ['id' => $formation->id]) }}" class="btn btn-primary">Découvrez la formation</a>
+                    <a href="{{ route('connexion',['formation_id' => $formation->id]) }}" class="btn btn-secondary">Postuler</a>
                 </div>
-                <a href="{{route('details_formation')}}"><button>Découvrez la formation</button></a>
-                <a href="{{route('connexion')}}"><button>Postuler</button></a>
-                <div class="horizontal-bar"></div>
             </div>
-            <div class="box-card">
-                <div class="card-label">Référent Digitale</div>
-                <div class="date-info">
-                    Date limite: <span class="red">20</span>/11 <span class="black">2024</span><br>
-                    Début: Juillet 202<br>
-                    Durée: 09 mois
-                </div>
-                <a href="{{route('details_formation')}}"><button>Découvrez la formation</button></a>
-                <a href="{{route('connexion')}}"><button>Postuler</button></a>
-                <div class="horizontal-bar"></div>
-            </div>
-            <div class="box-card">
-                <div class="card-label">Référent Digitale</div>
-                <div class="date-info">
-                    Date limite: <span class="red">20</span>/11 <span class="black">2024</span><br>
-                    Début: Juillet 202<br>
-                    Durée: 09 mois
-                </div>
-                <a href="{{route('details_formation')}}"><button>Découvrez la formation</button></a>
-                <a href="{{route('connexion')}}"><button>Postuler</button></a>
-                <div class="horizontal-bar"></div>
-            </div>
-        </div> 
-        <a href="{{route('nos_formations')}}"><button class="explorer-button">
-            <img src="{{ asset('images/fleche.png') }}" alt="Flèche" class="icon-fleche"> Explorer
-        </button></a> 
-    </div> -->
-    <div class="section-nos-formations">
-        <h1>Nos Formations</h1>
-        <div class="all-card-contain">
-            <div class="box-card">
-            <img src="{{ asset('images/africanwoman.jpg') }}" alt="">
-                <!-- <div class="card-label">Développement web</div> -->
-                <a href="{{route('details_formation')}}"><button class="btn-formation   ">Découvrez la formation</button></a>
-                <div class="horizontal-bar"></div>
-                <div class="card-label">Développement web</div>
-                <a href="{{route('connexion')}}"><button class="btn-formation   ">Postuler</button></a>
-                <div class="horizontal-bar"></div>
-            </div>
-            <div class="box-card">
-            <img src="{{ asset('images/africanwoman.jpg') }}" alt="">
-                <div class="card-label">Référent Digitale</div>
-                <a href="{{route('details_formation')}}"><button class="btn-formation   ">Découvrez la formation</button></a>
-                <div class="horizontal-bar"></div>
-                <div class="card-label">Référent digital</div>
-                <a href="{{route('connexion')}}"><button class="btn-formation   ">Postuler</button></a>
-                <div class="horizontal-bar"></div>
-            </div>
-            <div class="box-card">
-                <img src="{{ asset('images/africanwoman.jpg') }}" alt="">
-                <!-- <div class="card-label">Référent Digitale</div> -->
-                <a href="{{route('details_formation')}}"><button class="btn-formation   ">Découvrez la formation</button></a>
-                <div class="horizontal-bar"></div>
-                <div class="card-label">SAS Hackeuses</div>
-                <a href="{{route('connexion')}}"><button class="btn-formation   ">Postuler</button></a>
-                <div class="horizontal-bar"></div>
-            </div>
-        </div>  
+        </div>
+        @endforeach
     </div>
+    <div class="explorer-container">
+        <a href="{{ route('nos_formations') }}" class="explorer-button">
+            <img src="{{ asset('images/fleche.png') }}" alt="Flèche" class="icon-fleche"> Explorer
+        </a>
+    </div>
+</div>
     <h1 style="text-align:center">Nos Témoignages</h1>
     <div class="section-temoignage">
         <div class="box-temoignage">

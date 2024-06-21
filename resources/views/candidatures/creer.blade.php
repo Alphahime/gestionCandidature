@@ -31,9 +31,9 @@
             font-weight: 500;
             text-align: center;
             margin-bottom: 6vh;
-            background-color: #CE0033; 
-            color: white; 
-            padding: 10px; 
+            background-color: #CE0033;
+            color: white;
+            padding: 10px;
             border-radius: 5px;
         }
         .btn{
@@ -41,7 +41,7 @@
             border:none;
         }
     </style>
-    
+
 </head>
 <body>
     <header>
@@ -50,17 +50,18 @@
 
     <div class="container form-container">
         <h1>Postuler pour une formation</h1>
-    
+
         @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
-    
-        <form action="{{ route('candidatures.creer') }}" method="POST" enctype="multipart/form-data">
+
+        <form action="{{ route('candidatures.creer', ['id' => $formation->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
-    
-            <div class="form-group">
+
+            <input type="hidden" name="formation_id" value="{{ $formation->id }}">
+            {{-- <div class="form-group">
                 <label for="nom">Nom</label>
                 <input type="text" class="form-control" id="nom" name="nom" required>
             </div>
@@ -73,7 +74,7 @@
                 <label for="age">Âge</label>
                 <input type="number" class="form-control" id="age" name="age" required>
             </div>
-    
+
             <div class="form-group">
                 <label for="telephone">Téléphone</label>
                 <input type="tel" class="form-control" id="telephone" name="telephone" required>
@@ -83,11 +84,11 @@
                 <label for="adresse">Adresse</label>
                 <input type="text" class="form-control" id="adresse" name="adresse" required>
             </div>
-         
+
             <div class="form-group">
                 <label for="email">E-mail</label>
                 <input type="email" class="form-control" id="email" name="email" required>
-            </div>
+            </div>   --}}
 
             <div class="form-group">
                 <label for="biographie">Biographie</label>
@@ -103,7 +104,7 @@
                 <label for="cv">CV (PDF, DOC, DOCX)</label>
                 <input type="file" class="form-control-file" id="cv" name="cv" required>
             </div>
-    
+
             <button type="submit" class="btn btn-primary">Postuler</button>
         </form>
     </div>
