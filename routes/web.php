@@ -17,7 +17,7 @@ Route::get('/', [LandingController::class, 'landing'])->name('landing');
 // Routes pour les formations
 Route::get('/explore', [FormationController::class, 'allformation'])->name('nos_formations');
 Route::get('/indexdetail', [FormationController::class, 'detail'])->name('details_formation');
-Route::middleware(['auth'])->group(function () {
+// Route::middleware(['auth'])->group(function () {
 
     Route::get('/liste', [FormationController::class, 'affiche_formation'])->name('personnels.liste');
     Route::get('/ajout_form', [PersonnelController::class, 'ajouter'])->name('formation.ajouter');
@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/modif_form/{id}', [FormationController::class, 'Modifier'])->name('formation.modifier');
     Route::post('/modif_form/{id}', [FormationController::class, 'Modifier_traitement'])->name('formation.modifier_traitement');
     Route::get('/supprimer_form/{id}', [FormationController::class, 'supprimer'])->name('formation.supprimer');
-});
+//});
 
 // Routes pour l'authentification
 Route::get('/inscription', [AuthController::class, 'inscription'])->name('inscription');
