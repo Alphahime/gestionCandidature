@@ -24,7 +24,7 @@ class AuthController extends Controller
             'telephone' => 'required',
             'adresse' => 'required|min:3',
             'age' => 'required',
-            'cv' => 'required',
+          //  'cv' => 'required',
             'email' => 'required|email|unique:candidats,email',
             'mot_de_passe' => 'required|min:8|max:20'
         ]);
@@ -35,7 +35,7 @@ class AuthController extends Controller
         $candidat->telephone = $request->telephone;
         $candidat->adresse = $request->adresse;
         $candidat->age = $request->age;
-        $candidat->cv = $request->cv;
+        $candidat->cv = "null";
         $candidat->email = $request->email;
         $candidat->mot_de_passe = Hash::make($request->mot_de_passe);
         $candidat->save();
