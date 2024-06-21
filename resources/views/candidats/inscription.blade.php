@@ -114,8 +114,8 @@
             <div><input type="email" name="email" class="form-control" id="email" placeholder="malang2019marna@gmail.com" required></div>
             <div><label for="adresse" class="form-label">Adresse</label></div>
             <div><input type="text" name="adresse" class="form-control" id="adresse" placeholder="+221 77 777 77 77" required></div>
-            <div><label for="cv" class="form-label">Curricum Vitae</label></div>
-            <div> <input type="file" name="cv" class="form-control" id="cv" placeholder="Importez votre CV" required></div>
+            {{-- <div><label for="cv" class="form-label">Curricum Vitae</label></div>
+            <div> <input type="file" name="cv" class="form-control" id="cv" placeholder="Importez votre CV" required></div> --}}
             <div><label for="">Mot de passe</label></div>
             <div><input type="password" name="mot_de_passe" class="form-control" id="mot_de_passe" required></div>
             <button class="connect">S'inscrire</button>
