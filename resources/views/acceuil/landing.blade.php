@@ -483,8 +483,17 @@ gap: 60px;
                     <p class="card-text"><strong>Demarrage :</strong> {{ $formation->dateDebut }}</p>
                     <p class="card-text"><strong>Delai Candidature :</strong>{{ $formation->dateLimite }}</p>
                     <p class="card-text"><strong>Publié le :</strong> {{ $formation->datePublication }}</p>
+                    @if(strtotime($formation->dateLimite) < strtotime('now'))
+                    <p class="text-danger">La date limite pour candidater à cette formation est dépassée.</p>
+                @else
+                                <form action="{{ route('connexion',['formation_id' => $formation->id]) }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="formation_id" value="{{ $formation->id }}">
+                    <button type="submit" class="btn btn-primary">Postuler</button>
+                </form>
+            @endif
                     <a href="{{ route('details_formation', ['id' => $formation->id]) }}" class="btn btn-primary">Découvrez la formation</a>
-                    <a href="{{ route('connexion',['formation_id' => $formation->id]) }}" class="btn btn-secondary">Postuler</a>
+                    {{-- <a href="{{ route('connexion',['formation_id' => $formation->id]) }}" class="btn btn-secondary">Postuler  </a> --}}
                 </div>
             </div>
         </div>
