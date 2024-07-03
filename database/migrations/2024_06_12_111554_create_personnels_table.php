@@ -14,9 +14,7 @@ return new class extends Migration
             $table->string('telephone');
             $table->string('adresse');
             $table->string('role');
-            $table->string('mot_de_passe');
             $table->string('email');
-            $table->string('mot_de_passe');
             $table->timestamps();
         });
     }

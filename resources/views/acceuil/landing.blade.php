@@ -421,7 +421,9 @@ gap: 60px;
 .section-nos-formations .card button:hover {
     background-color: #a80026;
 }
-
+.text-danger{
+    color:red;
+}
 
 
     </style>
@@ -450,7 +452,11 @@ gap: 60px;
         <p style="font-size:20px">Simplon Sénégal vous propose diverses formations de qualité et riches en <br>
             pratique et en soft skills, découvrez votre formation.</p>
     </div>
-
+    @if(session('success'))
+    <div class="alert alert-success">
+      {{ session('success') }}
+     </div>
+  @endif
     <div class="section-quisommesnous">
         <h1>Qui sommes-nous</h1>
         <div class="container">
@@ -486,14 +492,10 @@ gap: 60px;
                     @if(strtotime($formation->dateLimite) < strtotime('now'))
                     <p class="text-danger">La date limite pour candidater à cette formation est dépassée.</p>
                 @else
-                                <form action="{{ route('connexion',['formation_id' => $formation->id]) }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="formation_id" value="{{ $formation->id }}">
-                    <button type="submit" class="btn btn-primary">Postuler</button>
-                </form>
+                 <a href="{{ route('connexion',['formation_id' => $formation->id]) }}" class="btn btn-secondary">Postuler  </a> <br>
             @endif
-                    <a href="{{ route('details_formation', ['id' => $formation->id]) }}" class="btn btn-primary">Découvrez la formation</a>
-                    {{-- <a href="{{ route('connexion',['formation_id' => $formation->id]) }}" class="btn btn-secondary">Postuler  </a> --}}
+               {{-- <a href="{{ route('details_formation', ['id' => $formation->id]) }}" class="btn btn-primary">Découvrez la formation</a> --}}
+
                 </div>
             </div>
         </div>
@@ -511,14 +513,18 @@ gap: 60px;
             <div class="temoignage-text">
                 "J'ai eu une expérience incroyable avec Simplon Sénégal. Les formateurs sont très compétents et les formations sont très pratiques."
             </div>
-            <div class="temoignage-image" style="background-image: url('path/to/image.jpg');"></div>
-            <div class="temoignage-name">Alpha Ndiaye</div>
+            <div class="temoignage-image">
+                <img src="{{ asset('images/garçon.png') }}" alt="Photo de Alpha Ndiaye" class="temoignage-image">
+             </div>
+             <div class="temoignage-name">Alpha Ndiaye</div>
         </div>
         <div class="box-temoignage">
             <div class="temoignage-text">
                 "Simplon Sénégal m'a permis d'acquérir des compétences essentielles pour réussir dans le domaine de la technologie."
             </div>
-            <div class="temoignage-image" style="background-image: url('path/to/image.jpg');"></div>
+            <div class="temoignage-image">
+               <img src="{{ asset('images/20230416_172647.jpg') }}" alt="Photo de Alpha Ndiaye" class="temoignage-image">
+            </div>
             <div class="temoignage-name">Alpha Ndiaye</div>
         </div>
     </div>

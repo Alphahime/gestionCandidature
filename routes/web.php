@@ -17,7 +17,7 @@ Route::get('/', [LandingController::class, 'landing'])->name('landing');
 // Routes pour les formations
 Route::get('/explore', [FormationController::class, 'allformation'])->name('nos_formations');
 Route::get('/indexdetail', [FormationController::class, 'detail'])->name('details_formation');
-// Route::middleware(['auth'])->group(function () {
+//Route::middleware(['auth'])->group(function () {
 
     Route::get('/liste', [FormationController::class, 'affiche_formation'])->name('personnels.liste');
     Route::get('/ajout_form', [PersonnelController::class, 'ajouter'])->name('formation.ajouter');
@@ -41,18 +41,15 @@ Route::post('/connexion', [AuthController::class, 'connexionPost'])->name('conne
 
 
 // Routes pour les candidatures
-//Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/formations/{id}/postuler', [CandidatureController::class, 'creer'])->name('candidatures.formulaire');
     Route::post('/formations/{id}/postuler', [CandidatureController::class, 'store'])->name('candidatures.creer');
-   Route::get('/candidatures', [CandidatureController::class, 'index'])->name('candidatures.index');
-  Route::get('/candidatures/{id}', [CandidatureController::class, 'detail'])->name('candidatures.detail');
-   Route::post('/candidatures/{id}/{action}', [CandidatureController::class, 'candidatureAction'])->name('candidatures.action');
-//});
-
-Route::post('candidatures/updateStatus/{id}/{action}', [CandidatureController::class, 'updateStatus'])->name('candidatures.updateStatus');
-
-
+    Route::get('/candidatures', [CandidatureController::class, 'index'])->name('candidatures.index');
+    Route::get('/candidatures/{id}', [CandidatureController::class, 'detail'])->name('candidatures.detail');
+    Route::post('/candidatures/{id}/{action}', [CandidatureController::class, 'candidatureAction'])->name('candidatures.action');
+});
 Route::get('/formations/{id}/candidatures', [FormationController::class, 'candidatures'])->name('formations.candidatures');
 
+Route::post('candidatures/updateStatus/{id}/{action}', [CandidatureController::class, 'updateStatus'])->name('candidatures.updateStatus');
 Route::post('/candidatures/{id}/approve', [CandidatureController::class, 'updateStatus'])->name('candidatures.approve');
 Route::post('/candidatures/{id}/reject', [CandidatureController::class, 'updateStatus'])->name('candidatures.reject');

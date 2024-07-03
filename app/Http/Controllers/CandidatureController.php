@@ -23,12 +23,12 @@ class CandidatureController extends Controller
         return view('candidatures.creer', compact('formation'));
     }
 
-    
+
     public function store(Request $request)
     {
         $userId = auth()->user()->id; // Supposons que l'utilisateur est authentifié
         $candidat = Candidat::where('id', $userId)->first();
-    
+
         // Validation des données de la candidature
         $validatedData = $request->validate([
             'formation_id' => 'required|exists:formations,id',
@@ -37,16 +37,16 @@ class CandidatureController extends Controller
             'cv' => 'required|file|mimes:pdf,doc,docx|max:2048'
             // Ajoutez d'autres règles de validation ici
         ]);
-    
+
         // Vérifiez si le candidat a déjà postulé à la formation spécifiée
         $existingCandidature = Candidature::where('candidat_id', $candidat->id)
                                           ->where('formation_id', $validatedData['formation_id'])
                                           ->first();
-    
+
         if ($existingCandidature) {
             return back()->with('error', 'Vous avez déjà postulé à cette formation.');
         }
-    
+
         // Création de la nouvelle candidature
         $candidature = new Candidature([
 
@@ -63,15 +63,15 @@ class CandidatureController extends Controller
             $path = $file->store('cvs', 'public');
             $candidature->cv = $path;
         }
-        
+
     // Enregistrez la candidature dans la base de données
     $candidature->save();
-    
-        return redirect()->route('candidatures.index')->with('success', 'Votre candidature a été soumise avec succès.');
-    }
-    
 
-   
+        return redirect('/')->with('success', 'Votre candidature a été soumise avec succès.');
+    }
+
+
+
 
 public function index()
 {

@@ -108,10 +108,9 @@ class AuthController extends Controller
             return redirect()->route('candidatures.index')->with('success', 'Connexion réussie');
         }
 
-        return false;
-
-
+        return redirect()->route('personnel.connexion')->with('error', 'Identifiants incorrects');
     }
+
 
     public function deconnexionPersonnel()
     {
